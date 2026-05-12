@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tan Loan Center | Mortgage & Coaching Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-brand: #0052ff;
+      --color-brand-hover: #578bfa;
+      --color-bg-light: #ffffff;
+      --color-bg-dark: #0a0b0d;
+      --color-surface-gray: #eef0f3;
+      --color-surface-dark: #282b31;
+      --color-text-dark: #0a0b0d;
+      --color-text-light: #ffffff;
+      --color-border: rgba(91,97,110,0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: var(--color-text-dark);
+      background: var(--color-bg-light);
+      line-height: 1.56;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--color-brand);
+      text-decoration: none;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 700; /* Assuming DM Sans bold for Display */
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: #5b616e;
+      margin-bottom: 24px;
+    }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 32px;
+      border-radius: 56px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      letter-spacing: 0.16px;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--color-brand);
+      color: var(--color-bg-light);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-brand-hover);
+    }
+
+    .btn-secondary {
+      background: var(--color-surface-gray);
+      color: var(--color-text-dark);
+      border: 1px solid var(--color-surface-gray);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e5e9;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 5%;
+      background: var(--color-bg-light);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-brand);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-item {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      position: relative;
+    }
+
+    .nav-item:hover {
+      color: var(--color-brand);
+    }
+
+    /* Dropdown simple styling */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--color-bg-light);
+      min-width: 240px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      padding: 12px 0;
+      z-index: 1;
+      top: 100%;
+      left: -20px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: var(--color-text-dark);
+      padding: 12px 24px;
+      text-decoration: none;
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--color-surface-gray);
+      color: var(--color-brand);
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 120px 5%;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-form input {
+      flex: 1;
+      padding: 16px 24px;
+      border-radius: 56px;
+      border: 1px solid var(--color-border);
+      font-size: 16px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .hero-form input:focus {
+      border-color: var(--color-brand);
+    }
+
+    /* Dark Section (Calculator / Info) */
+    .dark-section {
+      background: var(--color-bg-dark);
+      color: var(--color-text-light);
+    }
+
+    .dark-section h2, .dark-section h3 {
+      color: var(--color-text-light);
+    }
+
+    .dark-section p {
+      color: #8c92a1;
+    }
+
+    /* Grid layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--color-bg-light);
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      padding: 40px;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+    }
+    
+    .card-dark {
+      background: var(--color-surface-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Calculator Placeholder */
+    .calculator-ui {
+      background: var(--color-surface-dark);
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .calc-row {
+      margin-bottom: 24px;
+    }
+
+    .calc-row label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #8c92a1;
+    }
+
+    .calc-row input, .calc-row select {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--color-bg-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+      font-family: inherit;
+    }
+
+    /* Footer / Compliance */
+    footer {
+      background: var(--color-surface-gray);
+      padding: 64px 5%;
+      font-size: 14px;
+      color: #5b616e;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      margin-bottom: 48px;
+    }
+
+    .footer-col h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 24px;
+    }
+
+    .footer-col a {
+      color: #5b616e;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-col a:hover {
+      color: var(--color-brand);
+    }
+
+    .compliance-text {
+      max-width: 1280px;
+      margin: 0 auto;
+      border-top: 1px solid #d4d8df;
+      padding-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .logos {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-top: 16px;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--color-text-dark);
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .nav-links { display: none; } /* Simplified mobile nav for Phase 1 */
+      .hero-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Tan Loan Center</div>
+    <div class="nav-links">
+      <div class="dropdown">
+        <a href="#" class="nav-item">Loan Types ▾</a>
+        <div class="dropdown-content">
+          <a href="#">FHA & VA Loans</a>
+          <a href="#">Conventional & DSCR</a>
+          <a href="#">Bank Statement & ITIN</a>
+          <a href="#">HELOC & Reverse Mortgages</a>
+          <a href="#">Indian Native Loans</a>
+        </div>
+      </div>
+      <a href="#" class="nav-item">For BDMs</a>
+      <a href="#" class="nav-item">Calculator</a>
+      <a href="#" class="btn btn-primary" style="padding: 10px 24px;">Apply Now</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Your Pathway to Homeownership</h1>
+      <p class="lead">Expert guidance for your mortgage journey. From FHA to specialized loans, we find the perfect financial foundation for your future.</p>
+      
+      <div class="hero-form">
+        <input type="email" placeholder="Enter your email address">
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+      <p style="margin-top: 16px; font-size: 14px;">Looking to partner? <a href="#">Join as a BDM</a></p>
+    </div>
+  </header>
+
+  <section class="container">
+    <div style="text-align: center; margin-bottom: 64px;">
+      <h2>Comprehensive Loan Solutions</h2>
+      <p style="max-width: 600px; margin: 0 auto;">Whether you are a first-time homebuyer or an experienced investor, we have a specialized loan product tailored to your unique financial situation.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>FHA & VA Loans</h3>
+        <p>Government-backed loans offering lower down payments and favorable terms for veterans and first-time buyers.</p>
+        <a href="#" style="font-weight: 600;">Learn more →</a>
+      </div>
+      <div class="card">
+        <h3>Conventional & DSCR</h3>
+        <p>Standard financing options and specialized Debt Service Coverage Ratio loans for real estate investors.</p>
+        <a href="#" style="font-weight: 600;">Learn more →</a>
+      </div>
+      <div class="card">
+        <h3>Bank Statement & ITIN</h3>
+        <p>Alternative income verification for self-employed individuals and financing for ITIN holders.</p>
+        <a href="#" style="font-weight: 600;">Learn more →</a>
+      </div>
+      <div class="card">
+        <h3>HELOC</h3>
+        <p>Tap into your home's equity with a Home Equity Line of Credit for renovations or major expenses.</p>
+        <a href="#" style="font-weight: 600;">Learn more →</a>
+      </div>
+      <div class="card">
+        <h3>Reverse Mortgages</h3>
+        <p>Convert part of the equity in your home into cash without having to sell your home.</p>
+        <a href="#" style="font-weight: 600;">Learn more →</a>
+      </div>
+      <div class="card">
+        <h3>Indian Native Loans</h3>
+        <p>Specialized Section 184 home loans designed specifically for American Indian and Alaska Native families.</p>
+        <a href="#" style="font-weight: 600;">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="container grid-2">
+      <div>
+        <h2>Estimate Your Payment</h2>
+        <p class="lead">Use our interactive calculator to see what you can afford. Adjust your down payment, interest rate, and term to find a structure that works for you.</p>
+        <a href="#" class="btn btn-primary" style="margin-top: 24px;">Full Prequalification</a>
+      </div>
+      
+      <div class="calculator-ui">
+        <h3 style="margin-bottom: 24px;">Mortgage Calculator</h3>
+        <div class="calc-row">
+          <label>Home Price</label>
+          <input type="text" value="$450,000">
+        </div>
+        <div class="grid-2" style="gap: 16px; margin-bottom: 24px;">
+          <div class="calc-row" style="margin: 0;">
+            <label>Down Payment</label>
+            <input type="text" value="20%">
+          </div>
+          <div class="calc-row" style="margin: 0;">
+            <label>Interest Rate</label>
+            <input type="text" value="6.5%">
+          </div>
+        </div>
+        <div class="calc-row">
+          <label>Loan Term</label>
+          <select>
+            <option>30-Year Fixed</option>
+            <option>15-Year Fixed</option>
+            <option>5/1 ARM</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="width: 100%;">Calculate Payment</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Tan Loan Center</h4>
+        <a href="#">About Us</a>
+        <a href="#">For BDMs</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Loan Types</h4>
+        <a href="#">FHA & VA</a>
+        <a href="#">Conventional</a>
+        <a href="#">Bank Statement</a>
+        <a href="#">All Products</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Mortgage Calculator</a>
+        <a href="#">Application Portal</a>
+        <a href="#">Homebuyer Guide</a>
+      </div>
+    </div>
+    
+    <div class="compliance-text">
+      <div>
+        <strong>Tan Loan Center</strong><br>
+        Loan Officer: Tan Akles-Fitch<br>
+        Tan's NMLS Number: 1834094<br>
+        NEXA NMLS Number: 1660690<br>
+        <br>
+        Corporate Address: 3100 W Ray Road #201, Chandler, AZ 85226
+      </div>
+      
+      <p style="font-size: 12px; margin-bottom: 0;">
+        Information provided on this site is for informational purposes only and does not constitute a commitment to lend. All loans are subject to approval. Rates, terms, and programs are subject to change without notice.
+      </p>
+
+      <div class="logos">
+        <span>NEXA Mortgage</span>
+        <span>|</span>
+        <span>Equal Housing Opportunity</span>
+        <span>|</span>
+        <span>Equal Opportunity Lender</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
