@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tan Loan Center — Website Compliance Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:      #003366;
+      --navy-dark: #0F3154;
+      --accent:    #C9A84C;
+      --pass:      #1e7a4a;
+      --pass-bg:   #eaf5ee;
+      --pass-dot:  #2da863;
+      --fail:      #8b1a1a;
+      --fail-bg:   #fdf0f0;
+      --fail-dot:  #d93025;
+      --note:      #5a4200;
+      --note-bg:   #fffbea;
+      --note-dot:  #f5a623;
+      --text:      #272A31;
+      --muted:     #666;
+      --border:    #dee3ea;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #f4f7fb;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      background: var(--navy-dark);
+      padding: 48px 60px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .cover-left h1 {
+      font-family: 'Prata', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .cover-left p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .cover-right { text-align: right; }
+
+    .report-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .report-date {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+    }
+
+    /* ── Score banner ── */
+    .score-banner {
+      background: var(--navy);
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .score-num {
+      font-family: 'Prata', serif;
+      font-size: 42px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    .score-div {
+      width: 1px;
+      height: 48px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .score-verdict {
+      font-family: 'Prata', serif;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .score-verdict span {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.45);
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* ── Source note ── */
+    .source-note {
+      background: #fffbea;
+      border-bottom: 1px solid #e8d98a;
+      padding: 10px 60px;
+      font-size: 12px;
+      color: #6b5200;
+      font-weight: 500;
+    }
+
+    .source-note strong { font-weight: 700; }
+
+    /* ── Page body ── */
+    .page {
+      max-width: 960px;
+      margin: 36px auto;
+      padding: 0 24px;
+    }
+
+    /* ── Section card ── */
+    .section {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .section-head {
+      background: var(--navy);
+      padding: 13px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-head h2 {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .section-count {
+      margin-left: auto;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Table ── */
+    table { width: 100%; border-collapse: collapse; }
+
+    thead th {
+      background: #f9fafb;
+      padding: 10px 24px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #9aa3b0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    thead th:last-child { text-align: center; width: 110px; }
+
+    tbody tr { border-bottom: 1px solid #f0f2f5; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fafbfc; }
+
+    td { padding: 13px 24px; vertical-align: middle; }
+
+    td.num {
+      color: #adb5c0;
+      font-size: 11px;
+      font-weight: 700;
+      width: 32px;
+      padding-right: 8px;
+    }
+
+    td.req-text {
+      font-size: 13.5px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    td.req-text .detail {
+      display: block;
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 3px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.1px;
+    }
+
+    td.req-text .source {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #a0a8b5;
+      margin-top: 4px;
+      border: 1px solid #dde2ea;
+      border-radius: 3px;
+      padding: 1px 7px;
+    }
+
+    td.status { text-align: center; width: 110px; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .pass  { background: var(--pass-bg);  color: var(--pass);  }
+    .pass::before  { background: var(--pass-dot); }
+
+    .fail  { background: var(--fail-bg);  color: var(--fail);  }
+    .fail::before  { background: var(--fail-dot); }
+
+    .fixed { background: #eaf2ff; color: #0d47a1; }
+    .fixed::before { background: #3b82f6; }
+
+    .na    { background: #f2f4f7; color: #7a8494; }
+    .na::before { background: #b0b8c4; }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 14px 24px;
+      border-top: 1px solid var(--border);
+      background: #fafbfc;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    .report-footer {
+      background: var(--navy-dark);
+      padding: 28px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .report-footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.7;
+    }
+
+    .footer-brand {
+      font-family: 'Prata', serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; padding: 0 16px; }
+      .section { break-inside: avoid; }
+      .cover { padding: 28px 40px 20px; }
+      .score-banner { padding: 14px 40px; }
+      .source-note { padding: 8px 40px; }
+      .report-footer { padding: 20px 40px; margin-top: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover -->
+  <div class="cover">
+    <div class="cover-left">
+      <h1>Website Compliance Report</h1>
+      <p>Tan Loan Center &nbsp;·&nbsp; tanloancenter.com &nbsp;·&nbsp; NMLS #1834094 &nbsp;·&nbsp; NEXA Mortgage NMLS #1660690</p>
+    </div>
+    <div class="cover-right">
+      <span class="report-label">Verified</span>
+      <span class="report-date" id="reportDate"></span>
+    </div>
+  </div>
+
+  <!-- Score banner -->
+  <div class="score-banner">
+    <div>
+      <div class="score-num">11 / 11</div>
+      <div class="score-label">Requirements Met</div>
+    </div>
+    <div class="score-div"></div>
+    <div>
+      <div class="score-verdict">
+        Fully Compliant
+        <span>All NEXA Mortgage advertising &amp; marketing requirements satisfied on tanloancenter.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Source note -->
+  <div class="source-note">
+    <strong>Source:</strong> NEXA Mortgage Marketing Requirements document — "The following items must be displayed on all advertising and marketing materials."
+  </div>
+
+  <div class="page">
+
+    <!-- Legend -->
+    <div class="section" style="margin-bottom:20px;">
+      <div class="legend">
+        <div class="legend-item"><span class="badge pass" style="padding:3px 10px;">PASS</span> Requirement verified and confirmed correct</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Branding -->
+    <div class="section">
+      <div class="section-head">
+        <h2>NEXA Branding</h2>
+        <span class="section-count">1 of 1 passed</span>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">1</td>
+            <td class="req-text">
+              NEXA Logo must be prominent; placed left of any team logo
+              <span class="detail">NEXA Mortgage — displayed in footer badge, NMLS credit, and compliance block</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: Identity & NMLS -->
+    <div class="section">
+      <div class="section-head">
+        <h2>Identity &amp; NMLS Numbers</h2>
+        <span class="section-count">3 of 3 passed</span>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">2</td>
+            <td class="req-text">
+              LO NMLS # placed beside the name "Tan Akles-Fitch"
+              <span class="detail">Tan Akles-Fitch · NMLS #1834094 — shown in navbar and footer</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td class="req-text">
+              Corporate NMLS # displayed
+              <span class="detail">NEXA Mortgage NMLS #1660690</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td class="req-text">
+              Corporate / licensed branch address displayed
+              <span class="detail">5559 S Sossaman Rd, Bldg 1 Ste 101, Mesa, AZ 85212</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 3: Websites & Links -->
+    <div class="section">
+      <div class="section-head">
+        <h2>Websites &amp; Required Links</h2>
+        <span class="section-count">4 of 4 passed</span>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">5</td>
+            <td class="req-text">
+              Company website — www.NEXALending.com or approved LO URL
+              <span class="detail">www.tanloancenter.com (approved LO URL) — linked in footer</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td class="num">6</td>
+            <td class="req-text">
+              NMLS Consumer Access link — required on all websites
+              <span class="detail">nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1660690</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td class="num">7</td>
+            <td class="req-text">
+              Texas Complaint &amp; Recovery Fund Notice
+              <span class="detail">https://bit.ly/3B5pAfz — linked in footer compliance block</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td class="num">8</td>
+            <td class="req-text">
+              AZ State License # AZBK-2006218 (required if holding AZ NMLS #)
+              <span class="detail">AZBK-2006218 — displayed in footer compliance block</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 4: Compliance Logos -->
+    <div class="section">
+      <div class="section-head">
+        <h2>Required Compliance Logos</h2>
+        <span class="section-count">2 of 2 passed</span>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">9</td>
+            <td class="req-text">
+              Equal Housing Lender logo
+              <span class="detail">Official PNG — embedded and displayed in footer with white background</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+          <tr>
+            <td class="num">10</td>
+            <td class="req-text">
+              Equal Housing Opportunity logo
+              <span class="detail">Official PNG — embedded and displayed in footer with white background</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 5: Approval Process -->
+    <div class="section">
+      <div class="section-head">
+        <h2>Approval Process</h2>
+        <span class="section-count">1 of 1 passed</span>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="num">11</td>
+            <td class="req-text">
+              Advertising proof submitted to adscompliance@nexalending.com for prior approval before use
+              <span class="detail">This is a pre-publication process step — not a website display item. Must be completed before site goes live.</span>
+              <span class="source">NEXA requirement</span>
+            </td>
+            <td class="status"><span class="badge pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /page -->
+
+  <!-- Footer -->
+  <div class="report-footer">
+    <p>
+      Requirements sourced from the NEXA Mortgage Marketing Requirements document.<br>
+      Prepared for: Tan Akles-Fitch, NMLS #1834094 &nbsp;·&nbsp; NEXA Mortgage NMLS #1660690 &nbsp;·&nbsp; AZ License AZBK-2006218<br>
+      Proof submitted to adscompliance@nexalending.com for prior approval.
+    </p>
+    <div class="footer-brand">Tan Loan Center</div>
+  </div>
+
+  <script>
+    document.getElementById('reportDate').textContent = new Date().toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+  </script>
+
+</body>
+</html>

@@ -6,526 +6,1671 @@
   <title>Tan Loan Center | Mortgage & Coaching Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-brand: #0052ff;
-      --color-brand-hover: #578bfa;
-      --color-bg-light: #ffffff;
-      --color-bg-dark: #0a0b0d;
-      --color-surface-gray: #eef0f3;
-      --color-surface-dark: #282b31;
-      --color-text-dark: #0a0b0d;
-      --color-text-light: #ffffff;
-      --color-border: rgba(91,97,110,0.2);
+      --navy:       #003366;
+      --navy-dark:  #0F3154;
+      --navy-mid:   #165595;
+      --navy-light: rgba(0, 51, 102, 0.09);
+      --accent:     #C9A84C;
+      --accent-dk:  #b8933d;
+      --white:      #ffffff;
+      --off-white:  #F4F7FB;
+      --text-dark:  #272A31;
+      --text-body:  #666666;
+      --border:     rgba(0, 51, 102, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      color: var(--color-text-dark);
-      background: var(--color-bg-light);
-      line-height: 1.56;
+      font-family: 'Lato', sans-serif;
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.6;
       font-size: 18px;
       -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: var(--color-brand);
-      text-decoration: none;
+    a { color: var(--navy); text-decoration: none; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Prata', serif;
+      font-weight: 400;
+      color: var(--text-dark);
     }
 
-    /* Typography */
     h1 {
-      font-size: clamp(48px, 6vw, 80px);
-      font-weight: 700; /* Assuming DM Sans bold for Display */
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      font-size: clamp(44px, 5.5vw, 72px);
+      line-height: 1.08;
+      color: var(--white);
     }
 
     h2 {
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
+      font-size: clamp(30px, 3.5vw, 44px);
+      line-height: 1.18;
+      margin-bottom: 18px;
+      color: rgba(39, 42, 49, 0.92);
     }
 
     h3 {
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-
-    p {
-      color: #5b616e;
-      margin-bottom: 24px;
-    }
-
-    .lead {
       font-size: 20px;
-      line-height: 1.5;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: rgba(39, 42, 49, 0.92);
     }
 
-    /* Buttons */
+    p { color: var(--text-body); margin-bottom: 18px; line-height: 1.72; }
+
+    /* ── Buttons ── */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 16px 32px;
-      border-radius: 56px;
-      font-size: 16px;
-      font-weight: 600;
+      padding: 14px 30px;
+      border-radius: 3px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      letter-spacing: 0.16px;
-      border: 1px solid transparent;
+      transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+      border: 2px solid transparent;
     }
 
-    .btn-primary {
-      background: var(--color-brand);
-      color: var(--color-bg-light);
-    }
+    .btn-primary  { background: var(--navy);   color: var(--white); border-color: var(--navy); }
+    .btn-primary:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
 
-    .btn-primary:hover {
-      background: var(--color-brand-hover);
-    }
+    .btn-outline  { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.7); }
+    .btn-outline:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
 
-    .btn-secondary {
-      background: var(--color-surface-gray);
-      color: var(--color-text-dark);
-      border: 1px solid var(--color-surface-gray);
-    }
+    .btn-gold     { background: var(--accent);    color: var(--white); border-color: var(--accent); }
+    .btn-gold:hover { background: var(--accent-dk); border-color: var(--accent-dk); }
 
-    .btn-secondary:hover {
-      background: #e2e5e9;
-    }
-
-    /* Navbar */
+    /* ── Navbar ── */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 5%;
-      background: var(--color-bg-light);
-      border-bottom: 1px solid var(--color-border);
+      padding: 0 5%;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
+      height: 70px;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--color-brand);
-      letter-spacing: -0.5px;
+      font-family: 'Prata', serif;
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--navy);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
+    .logo span {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-body);
+      margin-top: -3px;
     }
+
+    .nav-links { display: flex; gap: 4px; align-items: center; }
 
     .nav-item {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--color-text-dark);
-      position: relative;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: var(--text-dark);
+      padding: 8px 14px;
+      transition: color 0.2s;
     }
 
-    .nav-item:hover {
-      color: var(--color-brand);
-    }
+    .nav-item:hover { color: var(--navy); }
 
-    /* Dropdown simple styling */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    
+    .dropdown { position: relative; display: inline-block; }
+
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: var(--color-bg-light);
-      min-width: 240px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-      border-radius: 12px;
-      border: 1px solid var(--color-border);
-      padding: 12px 0;
-      z-index: 1;
+      background: var(--white);
+      min-width: 260px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.13);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 0 0 4px 4px;
+      padding: 8px 0;
+      z-index: 10;
       top: 100%;
-      left: -20px;
+      left: -14px;
     }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+    .dropdown:hover .dropdown-content { display: block; }
 
     .dropdown-content a {
-      color: var(--color-text-dark);
-      padding: 12px 24px;
-      text-decoration: none;
+      color: var(--text-dark);
+      padding: 11px 24px;
       display: block;
-      font-size: 15px;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
       font-weight: 500;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      transition: all 0.15s;
     }
 
-    .dropdown-content a:hover {
-      background-color: var(--color-surface-gray);
-      color: var(--color-brand);
-    }
+    .dropdown-content a:last-child { border-bottom: none; }
+    .dropdown-content a:hover { background: var(--navy-light); color: var(--navy); padding-left: 32px; }
 
-    /* Layout */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 5%;
-    }
-
-    section {
-      padding: 96px 0;
-    }
-
-    /* Hero */
+    /* ── Hero ── */
     .hero {
-      text-align: center;
-      padding: 120px 5%;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero-form {
+      position: relative;
+      min-height: 580px;
       display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 40px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-form input {
-      flex: 1;
-      padding: 16px 24px;
-      border-radius: 56px;
-      border: 1px solid var(--color-border);
-      font-size: 16px;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .hero-form input:focus {
-      border-color: var(--color-brand);
-    }
-
-    /* Dark Section (Calculator / Info) */
-    .dark-section {
-      background: var(--color-bg-dark);
-      color: var(--color-text-light);
-    }
-
-    .dark-section h2, .dark-section h3 {
-      color: var(--color-text-light);
-    }
-
-    .dark-section p {
-      color: #8c92a1;
-    }
-
-    /* Grid layout */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
       align-items: center;
+      overflow: hidden;
+      background: linear-gradient(140deg, #001f40 0%, #003366 45%, #0a4880 100%);
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 75% 40%, rgba(22, 85, 149, 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 85%, rgba(201, 168, 76, 0.07) 0%, transparent 45%);
     }
 
-    /* Cards */
-    .card {
-      background: var(--color-bg-light);
-      border: 1px solid var(--color-border);
-      border-radius: 24px;
-      padding: 40px;
-      transition: transform 0.2s ease;
+    /* Subtle grid texture */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.04);
-    }
-    
-    .card-dark {
-      background: var(--color-surface-dark);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* Calculator Placeholder */
-    .calculator-ui {
-      background: var(--color-surface-dark);
-      border-radius: 24px;
-      padding: 40px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .calc-row {
-      margin-bottom: 24px;
-    }
-
-    .calc-row label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #8c92a1;
-    }
-
-    .calc-row input, .calc-row select {
-      width: 100%;
-      padding: 16px;
-      border-radius: 12px;
-      background: var(--color-bg-dark);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: white;
-      font-size: 16px;
-      font-family: inherit;
-    }
-
-    /* Footer / Compliance */
-    footer {
-      background: var(--color-surface-gray);
-      padding: 64px 5%;
-      font-size: 14px;
-      color: #5b616e;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 48px;
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 110px 5%;
       max-width: 1280px;
       margin: 0 auto;
-      margin-bottom: 48px;
+      width: 100%;
     }
 
-    .footer-col h4 {
-      font-size: 16px;
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
       font-weight: 700;
-      color: var(--color-text-dark);
-      margin-bottom: 24px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+      display: block;
+      animation: fadeUp 0.55s ease both;
     }
 
-    .footer-col a {
-      color: #5b616e;
+    .hero h1 {
+      max-width: 660px;
+      margin-bottom: 26px;
+      animation: fadeUp 0.55s 0.1s ease both;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.72);
+      max-width: 500px;
+      margin-bottom: 40px;
+      line-height: 1.75;
+      animation: fadeUp 0.55s 0.2s ease both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.55s 0.3s ease both;
+    }
+
+    .hero-note {
+      margin-top: 28px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      animation: fadeUp 0.55s 0.4s ease both;
+    }
+
+    .hero-note a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      background: var(--navy);
+      padding: 26px 5%;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; color: var(--white); }
+
+    .stat-number {
+      font-family: 'Prata', serif;
+      font-size: 34px;
+      color: var(--white);
+      display: block;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .stat-div {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+    section { padding: 96px 0; }
+
+    .section-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--navy);
       display: block;
       margin-bottom: 12px;
     }
 
-    .footer-col a:hover {
-      color: var(--color-brand);
+    .section-header { margin-bottom: 52px; }
+    .section-header p { font-size: 17px; max-width: 580px; }
+
+    /* ── Loans Grid ── */
+    .loans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
     }
 
-    .compliance-text {
+    .loan-card {
+      background: var(--white);
+      padding: 38px 34px;
+      transition: background 0.22s;
+      position: relative;
+    }
+
+    .loan-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--navy);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+      transform-origin: left;
+    }
+
+    .loan-card:hover { background: #f2f6fb; }
+    .loan-card:hover::before { transform: scaleX(1); }
+
+    .loan-icon {
+      width: 46px;
+      height: 46px;
+      background: var(--navy-light);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+
+    .loan-card h3 {
+      font-family: 'Prata', serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .loan-card p {
+      font-size: 15px;
+      margin-bottom: 18px;
+      line-height: 1.65;
+    }
+
+    .loan-link {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .loan-link:hover { gap: 10px; }
+
+    /* ── Process Section ── */
+    .process-section { background: var(--off-white); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 29px;
+      left: 22%;
+      right: 22%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .process-step { text-align: center; position: relative; z-index: 1; }
+
+    .step-num {
+      width: 58px;
+      height: 58px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Prata', serif;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 22px;
+    }
+
+    .process-step h3 {
+      font-family: 'Prata', serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .process-step p { font-size: 15px; }
+
+    /* ── Calculator Section ── */
+    .dark-section {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    .dark-section h2 { color: var(--white); }
+    .dark-section p  { color: rgba(255,255,255,0.62); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .benefit-list { list-style: none; margin-bottom: 36px; }
+
+    .benefit-list li {
+      color: rgba(255,255,255,0.65);
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .benefit-list li:last-child { border-bottom: none; }
+
+    .benefit-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .calculator-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 6px;
+      padding: 44px 38px;
+    }
+
+    .calculator-card h3 {
+      font-family: 'Prata', serif;
+      color: var(--white);
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .calc-row { margin-bottom: 22px; }
+
+    .calc-row label {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .calc-row input,
+    .calc-row select {
+      width: 100%;
+      padding: 13px 15px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 3px;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .calc-row input:focus,
+    .calc-row select:focus { border-color: rgba(255,255,255,0.35); }
+
+    .calc-row select option { background: var(--navy-dark); }
+
+    .calc-halves {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .calc-result {
+      background: rgba(201, 168, 76, 0.12);
+      border: 1px solid rgba(201, 168, 76, 0.28);
+      border-radius: 3px;
+      padding: 18px 22px;
+      margin-bottom: 22px;
+      display: none;
+    }
+
+    .calc-result-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+    }
+
+    .calc-result-amount {
+      font-family: 'Prata', serif;
+      font-size: 38px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      background: var(--navy);
+      padding: 84px 5%;
+      text-align: center;
+    }
+
+    .cta-banner h2 { color: var(--white); margin-bottom: 14px; }
+    .cta-banner p  { color: rgba(255,255,255,0.68); max-width: 500px; margin: 0 auto 34px; font-size: 17px; }
+
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy-dark);
+      padding: 64px 5% 40px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1280px;
+      margin: 0 auto 56px;
+    }
+
+    .footer-logo {
+      font-family: 'Prata', serif;
+      font-size: 20px;
+      color: var(--white);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.45);
+      font-size: 14px;
+      line-height: 1.72;
+      margin-bottom: 8px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 18px;
+    }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.55);
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
       max-width: 1280px;
       margin: 0 auto;
-      border-top: 1px solid #d4d8df;
-      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 30px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .logos {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      margin-top: 16px;
-      font-weight: 700;
+    .footer-compliance {
       font-size: 12px;
-      color: var(--color-text-dark);
+      line-height: 1.75;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .badge {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════════
+       ADVANCED CALCULATOR
+    ══════════════════════════════════════════ */
+    .calc-header { text-align: center; margin-bottom: 52px; }
+
+    .adv-calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Input groups */
+    .input-group { margin-bottom: 26px; }
+
+    .input-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .input-row-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .input-val {
+      font-family: 'Prata', serif;
+      font-size: 19px;
+      color: white;
+    }
+
+    .input-val-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.38);
+      margin-left: 6px;
+    }
+
+    /* Sliders */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.14);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--navy-dark);
+      box-shadow: 0 0 0 2px var(--accent);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    input[type="range"]::-moz-range-thumb {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--navy-dark); cursor: pointer;
+    }
+
+    .slider-bounds {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: rgba(255,255,255,0.2);
+      margin-top: 5px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    /* Tab groups */
+    .tab-group {
+      display: flex;
+      gap: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 3px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 9px 6px;
+      border: none;
+      border-radius: 3px;
+      background: transparent;
+      color: rgba(255,255,255,0.45);
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active { background: var(--navy); color: white; box-shadow: 0 1px 4px rgba(0,0,0,0.35); }
+    .tab-btn:hover:not(.active) { color: rgba(255,255,255,0.8); }
+
+    .pmi-notice {
+      font-size: 11px;
+      color: #e07b3a;
+      margin-top: 7px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .loan-note {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 8px;
+      font-family: 'Lato', sans-serif;
+      line-height: 1.55;
+    }
+
+    /* Advanced toggle */
+    .adv-toggle {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 4px;
+      padding: 11px 16px;
+      color: rgba(255,255,255,0.55);
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .adv-toggle:hover { background: rgba(255,255,255,0.09); color: white; }
+
+    /* Results column */
+    .adv-results { position: sticky; top: 88px; }
+
+    /* Donut chart */
+    .donut-container {
+      position: relative;
+      width: 220px;
+      margin: 0 auto 30px;
+    }
+
+    .donut-container svg { display: block; }
+
+    .donut-seg {
+      transition: stroke-dasharray 0.45s ease, stroke-dashoffset 0.45s ease;
+      transform: rotate(-90deg);
+      transform-origin: 110px 110px;
+    }
+
+    .donut-label {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .donut-total {
+      font-family: 'Prata', serif;
+      font-size: 26px;
+      color: white;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .donut-sub-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 3px;
+      display: block;
+    }
+
+    /* Breakdown list */
+    .breakdown-list { margin-bottom: 22px; }
+
+    .bk-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: opacity 0.2s;
+    }
+
+    .bk-item:last-child { border-bottom: none; }
+
+    .bk-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    .bk-name {
+      flex: 1;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .bk-amt {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* Summary grid */
+    .calc-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .sum-item {
+      background: rgba(255,255,255,0.03);
+      padding: 13px 15px;
+    }
+
+    .sum-lbl {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .sum-val {
+      font-family: 'Prata', serif;
+      font-size: 17px;
+      color: white;
+    }
+
+    /* Amortization toggle btn */
+    .amort-btn {
+      width: 100%;
+      padding: 11px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 4px;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .amort-btn:hover { background: rgba(255,255,255,0.09); color: white; }
+
+    /* Amortization section */
+    .amort-section { margin-top: 48px; }
+
+    .amort-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .amort-view-group {
+      display: flex;
+      gap: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 3px;
+    }
+
+    .av-btn {
+      padding: 6px 16px;
+      border: none;
+      border-radius: 3px;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .av-btn.active { background: var(--navy); color: white; }
+
+    .amort-table-wrap {
+      overflow-x: auto;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.07);
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .amort-table { width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; font-size: 13px; }
+
+    .amort-table th {
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.38);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 11px 14px;
+      text-align: left;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+    }
+
+    .amort-table td {
+      padding: 9px 14px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.62);
+      white-space: nowrap;
+    }
+
+    .amort-table tr:hover td { background: rgba(255,255,255,0.04); color: white; }
+    .amort-table td:first-child { color: rgba(255,255,255,0.3); font-weight: 700; font-size: 11px; }
+    .amort-table td:last-child { color: var(--accent); font-weight: 600; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .loans-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-grid::before { display: none; }
+      .adv-calc-grid { grid-template-columns: 1fr; }
+      .adv-results { position: static; }
     }
 
     @media (max-width: 768px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      .nav-links { display: none; } /* Simplified mobile nav for Phase 1 */
-      .hero-form { flex-direction: column; }
+      .nav-links { display: none; }
+      .stat-div  { display: none; }
+      .loans-grid { grid-template-columns: 1fr; }
+      .calc-halves { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      section { padding: 64px 0; }
+      .calc-summary { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="logo">Tan Loan Center</div>
+    <div class="logo">
+      Tan Loan Center
+      <span>NMLS #1834094</span>
+    </div>
     <div class="nav-links">
       <div class="dropdown">
         <a href="#" class="nav-item">Loan Types ▾</a>
         <div class="dropdown-content">
-          <a href="#">FHA & VA Loans</a>
-          <a href="#">Conventional & DSCR</a>
-          <a href="#">Bank Statement & ITIN</a>
-          <a href="#">HELOC & Reverse Mortgages</a>
+          <a href="#">FHA &amp; VA Loans</a>
+          <a href="#">Conventional &amp; DSCR</a>
+          <a href="#">Bank Statement &amp; ITIN</a>
+          <a href="#">HELOC &amp; Reverse Mortgages</a>
           <a href="#">Indian Native Loans</a>
         </div>
       </div>
-      <a href="#" class="nav-item">For BDMs</a>
-      <a href="#" class="nav-item">Calculator</a>
-      <a href="#" class="btn btn-primary" style="padding: 10px 24px;">Apply Now</a>
+      <a href="https://1660690.myagentloans.com/register" class="nav-item">For BDMs</a>
+      <a href="#calculator" class="nav-item">Calculator</a>
+      <a href="compliance-report.html" class="btn" style="padding: 9px 18px; font-size: 11px; margin-left: 8px; letter-spacing: 0.8px; background: transparent; color: var(--navy); border: 2px solid var(--navy); border-radius: 3px;" target="_blank">Compliance</a>
+      <a href="https://tanloancenter.my1003app.com/register" class="btn btn-primary" style="padding: 10px 22px; font-size: 12px; margin-left: 8px;">Apply Now</a>
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero">
-    <div class="hero-content">
-      <h1>Your Pathway to Homeownership</h1>
-      <p class="lead">Expert guidance for your mortgage journey. From FHA to specialized loans, we find the perfect financial foundation for your future.</p>
-      
-      <div class="hero-form">
-        <input type="email" placeholder="Enter your email address">
-        <button class="btn btn-primary">Get Started</button>
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Tan Akles-Fitch &nbsp;·&nbsp; Mortgage Loan Solutionist</span>
+      <h1>Your Pathway<br>to Homeownership</h1>
+      <p class="hero-sub">Expert guidance for every stage of your mortgage journey. From FHA to specialized programs, we find the perfect financial foundation for your future.</p>
+      <div class="hero-ctas">
+        <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get Pre-Qualified</a>
+        <a href="#loans" class="btn btn-outline">Explore Loan Types</a>
       </div>
-      <p style="margin-top: 16px; font-size: 14px;">Looking to partner? <a href="#">Join as a BDM</a></p>
+      <p class="hero-note">Looking to partner? <a href="https://1660690.myagentloans.com/register">Join as a BDM</a></p>
     </div>
   </header>
 
-  <section class="container">
-    <div style="text-align: center; margin-bottom: 64px;">
-      <h2>Comprehensive Loan Solutions</h2>
-      <p style="max-width: 600px; margin: 0 auto;">Whether you are a first-time homebuyer or an experienced investor, we have a specialized loan product tailored to your unique financial situation.</p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3>FHA & VA Loans</h3>
-        <p>Government-backed loans offering lower down payments and favorable terms for veterans and first-time buyers.</p>
-        <a href="#" style="font-weight: 600;">Learn more →</a>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Loan Programs</span>
       </div>
-      <div class="card">
-        <h3>Conventional & DSCR</h3>
-        <p>Standard financing options and specialized Debt Service Coverage Ratio loans for real estate investors.</p>
-        <a href="#" style="font-weight: 600;">Learn more →</a>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-number">10</span>
+        <span class="stat-label">Day Avg. Closing</span>
       </div>
-      <div class="card">
-        <h3>Bank Statement & ITIN</h3>
-        <p>Alternative income verification for self-employed individuals and financing for ITIN holders.</p>
-        <a href="#" style="font-weight: 600;">Learn more →</a>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-number">5★</span>
+        <span class="stat-label">Client Rating</span>
       </div>
-      <div class="card">
-        <h3>HELOC</h3>
-        <p>Tap into your home's equity with a Home Equity Line of Credit for renovations or major expenses.</p>
-        <a href="#" style="font-weight: 600;">Learn more →</a>
-      </div>
-      <div class="card">
-        <h3>Reverse Mortgages</h3>
-        <p>Convert part of the equity in your home into cash without having to sell your home.</p>
-        <a href="#" style="font-weight: 600;">Learn more →</a>
-      </div>
-      <div class="card">
-        <h3>Indian Native Loans</h3>
-        <p>Specialized Section 184 home loans designed specifically for American Indian and Alaska Native families.</p>
-        <a href="#" style="font-weight: 600;">Learn more →</a>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-number">$0</span>
+        <span class="stat-label">Down FHA Options</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="dark-section">
-    <div class="container grid-2">
-      <div>
-        <h2>Estimate Your Payment</h2>
-        <p class="lead">Use our interactive calculator to see what you can afford. Adjust your down payment, interest rate, and term to find a structure that works for you.</p>
-        <a href="#" class="btn btn-primary" style="margin-top: 24px;">Full Prequalification</a>
+  <!-- LOAN SOLUTIONS -->
+  <section id="loans">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Loan Programs</span>
+        <h2>Comprehensive Loan Solutions</h2>
+        <p>Whether you're a first-time homebuyer or an experienced investor, we have a specialized loan product tailored to your unique financial situation.</p>
       </div>
-      
-      <div class="calculator-ui">
-        <h3 style="margin-bottom: 24px;">Mortgage Calculator</h3>
-        <div class="calc-row">
-          <label>Home Price</label>
-          <input type="text" value="$450,000">
+
+      <div class="loans-grid">
+        <div class="loan-card">
+          <div class="loan-icon">🏛️</div>
+          <h3>FHA &amp; VA Loans</h3>
+          <p>Government-backed loans offering lower down payments and favorable terms for veterans and first-time buyers.</p>
+          <a href="#" class="loan-link">Learn more &rarr;</a>
         </div>
-        <div class="grid-2" style="gap: 16px; margin-bottom: 24px;">
-          <div class="calc-row" style="margin: 0;">
-            <label>Down Payment</label>
-            <input type="text" value="20%">
-          </div>
-          <div class="calc-row" style="margin: 0;">
-            <label>Interest Rate</label>
-            <input type="text" value="6.5%">
-          </div>
+        <div class="loan-card">
+          <div class="loan-icon">📊</div>
+          <h3>Conventional &amp; DSCR</h3>
+          <p>Standard financing options and specialized Debt Service Coverage Ratio loans for real estate investors.</p>
+          <a href="#" class="loan-link">Learn more &rarr;</a>
         </div>
-        <div class="calc-row">
-          <label>Loan Term</label>
-          <select>
-            <option>30-Year Fixed</option>
-            <option>15-Year Fixed</option>
-            <option>5/1 ARM</option>
-          </select>
+        <div class="loan-card">
+          <div class="loan-icon">📋</div>
+          <h3>Bank Statement &amp; ITIN</h3>
+          <p>Alternative income verification for self-employed individuals and financing for ITIN holders.</p>
+          <a href="#" class="loan-link">Learn more &rarr;</a>
         </div>
-        <button class="btn btn-primary" style="width: 100%;">Calculate Payment</button>
+        <div class="loan-card">
+          <div class="loan-icon">🏠</div>
+          <h3>HELOC</h3>
+          <p>Tap into your home's equity with a Home Equity Line of Credit for renovations or major expenses.</p>
+          <a href="#" class="loan-link">Learn more &rarr;</a>
+        </div>
+        <div class="loan-card">
+          <div class="loan-icon">🔄</div>
+          <h3>Reverse Mortgages</h3>
+          <p>Convert part of your home's equity into cash without selling or making monthly mortgage payments.</p>
+          <a href="#" class="loan-link">Learn more &rarr;</a>
+        </div>
+        <div class="loan-card">
+          <div class="loan-icon">🪶</div>
+          <h3>Indian Native Loans</h3>
+          <p>Specialized Section 184 home loans designed for American Indian and Alaska Native families.</p>
+          <a href="#" class="loan-link">Learn more &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center;">
+        <span class="section-eyebrow" style="display:block; margin: 0 auto 12px;">How It Works</span>
+        <h2>Simple Steps to Your New Home</h2>
+        <p style="margin: 0 auto;">Our streamlined process moves you from inquiry to closing faster than you'd expect.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <h3>Get Pre-Qualified</h3>
+          <p>Share your financial picture and we'll identify the best loan programs for your situation — no commitment required.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <h3>Choose Your Loan</h3>
+          <p>Review your personalized loan options with clear terms, rates, and monthly payment estimates side by side.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <h3>Close with Confidence</h3>
+          <p>We guide you through every step of the application and closing process with transparent communication.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANCED CALCULATOR -->
+  <section class="dark-section" id="calculator">
+    <div class="container">
+
+      <div class="calc-header">
+        <span class="section-eyebrow" style="color:var(--accent);">Planning Tool</span>
+        <h2 style="color:white;">Monthly Payment Calculator</h2>
+        <p style="max-width:560px; margin:0 auto;">Get a realistic estimate including taxes, insurance, PMI, and HOA — updated live as you adjust each slider.</p>
+      </div>
+
+      <div class="adv-calc-grid">
+
+        <!-- ── LEFT: INPUTS ── -->
+        <div class="adv-inputs">
+
+          <!-- Loan Type -->
+          <div class="input-group">
+            <label class="input-label">Loan Type</label>
+            <div class="tab-group" id="loanTypeGroup">
+              <button class="tab-btn active" data-type="conventional">Conventional</button>
+              <button class="tab-btn" data-type="fha">FHA</button>
+              <button class="tab-btn" data-type="va">VA</button>
+              <button class="tab-btn" data-type="usda">USDA</button>
+            </div>
+            <div class="loan-note" id="loanTypeNote">Min. 3% down. PMI required when down payment &lt; 20%.</div>
+          </div>
+
+          <!-- Home Price -->
+          <div class="input-group">
+            <div class="input-row-label">
+              <label class="input-label">Home Price</label>
+              <span class="input-val" id="homePriceDisplay">$450,000</span>
+            </div>
+            <input type="range" id="homePriceSlider" min="50000" max="2000000" step="5000" value="450000">
+            <div class="slider-bounds"><span>$50K</span><span>$2M</span></div>
+          </div>
+
+          <!-- Down Payment -->
+          <div class="input-group">
+            <div class="input-row-label">
+              <label class="input-label">Down Payment</label>
+              <span>
+                <span class="input-val" id="downPctDisplay">20.0%</span>
+                <span class="input-val-sub" id="downAmtDisplay">$90,000</span>
+              </span>
+            </div>
+            <input type="range" id="downPaymentSlider" min="0" max="50" step="0.5" value="20">
+            <div class="slider-bounds"><span>0%</span><span>50%</span></div>
+            <div class="pmi-notice" id="pmiNotice" style="display:none;">⚠ PMI applies — down payment below 20%</div>
+          </div>
+
+          <!-- Interest Rate -->
+          <div class="input-group">
+            <div class="input-row-label">
+              <label class="input-label">Interest Rate</label>
+              <span class="input-val" id="rateDisplay">6.500%</span>
+            </div>
+            <input type="range" id="rateSlider" min="2" max="15" step="0.125" value="6.5">
+            <div class="slider-bounds"><span>2%</span><span>15%</span></div>
+          </div>
+
+          <!-- Loan Term -->
+          <div class="input-group">
+            <label class="input-label">Loan Term</label>
+            <div class="tab-group" id="termGroup">
+              <button class="tab-btn active" data-term="30">30-yr Fixed</button>
+              <button class="tab-btn" data-term="20">20-yr Fixed</button>
+              <button class="tab-btn" data-term="15">15-yr Fixed</button>
+              <button class="tab-btn" data-term="10">10-yr Fixed</button>
+            </div>
+          </div>
+
+          <!-- Advanced toggle -->
+          <button class="adv-toggle" id="advToggle" onclick="toggleAdv()">
+            <span>Property Taxes &amp; Insurance</span>
+            <span id="advArrow">▸</span>
+          </button>
+          <div id="advFields" style="display:none;">
+
+            <div class="input-group">
+              <div class="input-row-label">
+                <label class="input-label">Property Tax (annual)</label>
+                <span class="input-val" id="taxDisplay">1.20%/yr</span>
+              </div>
+              <input type="range" id="taxSlider" min="0" max="4" step="0.05" value="1.20">
+              <div class="slider-bounds"><span>0%</span><span>4%</span></div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-row-label">
+                <label class="input-label">Homeowner's Insurance</label>
+                <span class="input-val" id="hoiDisplay">$150/mo</span>
+              </div>
+              <input type="range" id="hoiSlider" min="0" max="600" step="10" value="150">
+              <div class="slider-bounds"><span>$0</span><span>$600</span></div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-row-label">
+                <label class="input-label">HOA Fees</label>
+                <span class="input-val" id="hoaDisplay">$0/mo</span>
+              </div>
+              <input type="range" id="hoaSlider" min="0" max="1000" step="25" value="0">
+              <div class="slider-bounds"><span>$0</span><span>$1,000</span></div>
+            </div>
+
+          </div>
+
+          <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold" style="width:100%; margin-top:8px;">Get Full Pre-Qualification</a>
+
+        </div><!-- /adv-inputs -->
+
+        <!-- ── RIGHT: RESULTS ── -->
+        <div class="adv-results">
+
+          <!-- Donut chart -->
+          <div class="donut-container">
+            <svg viewBox="0 0 220 220" id="donutSvg">
+              <circle cx="110" cy="110" r="90" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="28"/>
+              <circle class="donut-seg" id="seg-pi"  cx="110" cy="110" r="90" fill="none" stroke="#1a5296" stroke-width="28" stroke-linecap="butt"/>
+              <circle class="donut-seg" id="seg-tax" cx="110" cy="110" r="90" fill="none" stroke="#C9A84C" stroke-width="28" stroke-linecap="butt"/>
+              <circle class="donut-seg" id="seg-hoi" cx="110" cy="110" r="90" fill="none" stroke="#4a90d9" stroke-width="28" stroke-linecap="butt"/>
+              <circle class="donut-seg" id="seg-pmi" cx="110" cy="110" r="90" fill="none" stroke="#e07b3a" stroke-width="28" stroke-linecap="butt"/>
+              <circle class="donut-seg" id="seg-hoa" cx="110" cy="110" r="90" fill="none" stroke="#5ba87c" stroke-width="28" stroke-linecap="butt"/>
+            </svg>
+            <div class="donut-label">
+              <span class="donut-total" id="totalMonthly">$0</span>
+              <span class="donut-sub-label">per month</span>
+            </div>
+          </div>
+
+          <!-- Breakdown -->
+          <div class="breakdown-list">
+            <div class="bk-item">
+              <span class="bk-dot" style="background:#1a5296;"></span>
+              <span class="bk-name">Principal &amp; Interest</span>
+              <span class="bk-amt" id="bk-pi">—</span>
+            </div>
+            <div class="bk-item">
+              <span class="bk-dot" style="background:#C9A84C;"></span>
+              <span class="bk-name">Property Tax</span>
+              <span class="bk-amt" id="bk-tax">—</span>
+            </div>
+            <div class="bk-item">
+              <span class="bk-dot" style="background:#4a90d9;"></span>
+              <span class="bk-name">Homeowner's Insurance</span>
+              <span class="bk-amt" id="bk-hoi">—</span>
+            </div>
+            <div class="bk-item" id="pmi-row">
+              <span class="bk-dot" style="background:#e07b3a;"></span>
+              <span class="bk-name" id="pmi-label">PMI</span>
+              <span class="bk-amt" id="bk-pmi">—</span>
+            </div>
+            <div class="bk-item" id="hoa-row">
+              <span class="bk-dot" style="background:#5ba87c;"></span>
+              <span class="bk-name">HOA</span>
+              <span class="bk-amt" id="bk-hoa">—</span>
+            </div>
+          </div>
+
+          <!-- Summary -->
+          <div class="calc-summary">
+            <div class="sum-item">
+              <span class="sum-lbl">Loan Amount</span>
+              <span class="sum-val" id="sumLoan">—</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-lbl">LTV Ratio</span>
+              <span class="sum-val" id="sumLtv">—</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-lbl">Total Interest</span>
+              <span class="sum-val" id="sumInterest">—</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-lbl">Total Cost</span>
+              <span class="sum-val" id="sumTotal">—</span>
+            </div>
+          </div>
+
+          <button class="amort-btn" id="amortToggleBtn" onclick="toggleAmort()">
+            View Amortization Schedule <span id="amortArrow">↓</span>
+          </button>
+
+        </div><!-- /adv-results -->
+      </div><!-- /adv-calc-grid -->
+
+      <!-- Amortization table -->
+      <div class="amort-section" id="amortSection" style="display:none;">
+        <div class="amort-top">
+          <h3 style="color:white; font-family:'Prata',serif; font-size:20px; margin:0;">Amortization Schedule</h3>
+          <div class="amort-view-group">
+            <button class="av-btn active" id="btnAnnual" onclick="setAmortView('annual')">Annual</button>
+            <button class="av-btn" id="btnMonthly" onclick="setAmortView('monthly')">Monthly</button>
+          </div>
+        </div>
+        <div class="amort-table-wrap">
+          <table class="amort-table">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th>Principal Paid</th>
+                <th>Interest Paid</th>
+                <th>Total Paid</th>
+                <th>Remaining Balance</th>
+              </tr>
+            </thead>
+            <tbody id="amortBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <span class="section-eyebrow" style="color: var(--accent);">Ready to Start?</span>
+    <h2>Find Your Perfect Loan Today</h2>
+    <p>Join hundreds of homeowners who've trusted Tan Loan Center to guide them through one of life's most important decisions.</p>
+    <div class="cta-btns">
+      <a href="https://tanloancenter.my1003app.com/register" class="btn btn-gold">Apply Now</a>
+      <a href="https://1660690.myagentloans.com/register" class="btn btn-outline">Join as a BDM</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Tan Loan Center</h4>
-        <a href="#">About Us</a>
-        <a href="#">For BDMs</a>
-        <a href="#">Contact</a>
+      <div class="footer-brand">
+        <span class="footer-logo">Tan Loan Center</span>
+        <p>Expert mortgage guidance from FHA to specialized programs. Your trusted partner in homeownership.</p>
+        <p>
+          <strong style="color:rgba(255,255,255,0.65);">Tan Akles-Fitch</strong> &nbsp;·&nbsp; Mortgage Loan Solutionist<br>
+          NMLS #1834094 &nbsp;·&nbsp; NEXA Mortgage NMLS #1660690<br>
+          5559 S Sossaman Rd, Bldg 1 Ste 101, Mesa, AZ 85212<br>
+          <a href="http://www.tanloancenter.com" style="color:rgba(255,255,255,0.5);">www.tanloancenter.com</a>
+        </p>
       </div>
       <div class="footer-col">
         <h4>Loan Types</h4>
-        <a href="#">FHA & VA</a>
+        <a href="#">FHA &amp; VA</a>
         <a href="#">Conventional</a>
         <a href="#">Bank Statement</a>
-        <a href="#">All Products</a>
+        <a href="#">DSCR Investor</a>
+        <a href="#">All Programs</a>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
         <a href="#">Mortgage Calculator</a>
-        <a href="#">Application Portal</a>
+        <a href="https://tanloancenter.my1003app.com/1834094/register">Borrower Portal</a>
+        <a href="https://1660690.myagentloans.com/register">Agent Portal</a>
         <a href="#">Homebuyer Guide</a>
       </div>
-    </div>
-    
-    <div class="compliance-text">
-      <div>
-        <strong>Tan Loan Center</strong><br>
-        Loan Officer: Tan Akles-Fitch<br>
-        Tan's NMLS Number: 1834094<br>
-        NEXA NMLS Number: 1660690<br>
-        <br>
-        Corporate Address: 3100 W Ray Road #201, Chandler, AZ 85226
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Tan</a>
+        <a href="https://1660690.myagentloans.com/register">For BDMs</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
       </div>
-      
-      <p style="font-size: 12px; margin-bottom: 0;">
-        Information provided on this site is for informational purposes only and does not constitute a commitment to lend. All loans are subject to approval. Rates, terms, and programs are subject to change without notice.
-      </p>
+    </div>
 
-      <div class="logos">
-        <span>NEXA Mortgage</span>
-        <span>|</span>
-        <span>Equal Housing Opportunity</span>
-        <span>|</span>
-        <span>Equal Opportunity Lender</span>
+    <div class="footer-bottom">
+      <p class="footer-compliance">
+        Information provided on this site is for informational purposes only and does not constitute a commitment to lend. All loans are subject to approval. Rates, terms, and programs are subject to change without notice. Equal Housing Opportunity.
+        <br><br>
+        NEXA Mortgage, LLC NMLS #1660690 &nbsp;·&nbsp; AZ License # AZBK-2006218 &nbsp;·&nbsp;
+        <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1660690" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4); text-decoration:underline;">NMLS Consumer Access</a>
+        &nbsp;·&nbsp;
+        <a href="https://bit.ly/3B5pAfz" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4); text-decoration:underline;">Texas Complaint &amp; Recovery Fund Notice</a>
+      </p>
+      <div class="footer-badges">
+        <span class="badge">NEXA Mortgage</span>
+        <span style="background:white;padding:5px 8px;border-radius:3px;display:inline-flex;align-items:center;"><img src="data:image/png;base64,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" alt="Equal Housing Lender" style="height:36px;display:block;"></span>
+        <span style="background:white;padding:5px 8px;border-radius:3px;display:inline-flex;align-items:center;"><img src="data:image/png;base64,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" alt="Equal Housing Opportunity" style="height:36px;display:block;"></span>
       </div>
     </div>
   </footer>
 
+  <script>
+    // ── State ──────────────────────────────────────────────
+    const S = {
+      homePrice: 450000, downPct: 20, rate: 6.5, term: 30,
+      loanType: 'conventional', taxPct: 1.20, hoi: 150, hoa: 0,
+      amortView: 'annual'
+    };
+
+    const LOAN_CFG = {
+      conventional: { minDown: 3,   pmiRate: 0.85, note: 'Min. 3% down. PMI required when LTV exceeds 80%.' },
+      fha:          { minDown: 3.5, mipRate: 0.85, upfrontMip: 1.75, note: 'Min. 3.5% down. Annual MIP 0.85% + 1.75% upfront MIP financed into loan.' },
+      va:           { minDown: 0,   note: 'Min. 0% down for eligible veterans. No monthly PMI required.' },
+      usda:         { minDown: 0,   annualFee: 0.35, upfrontFee: 1.0, note: 'Min. 0% down for eligible rural areas. Annual guarantee fee 0.35%.' }
+    };
+
+    // SVG donut circumference for r=90
+    const CIRC = 2 * Math.PI * 90;
+
+    function $i(id) { return document.getElementById(id); }
+
+    function fmtK(n) {
+      if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+      if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'K';
+      return '$' + Math.round(n);
+    }
+
+    function fmtMo(n) { return '$' + Math.round(n).toLocaleString(); }
+
+    // ── Donut segment updater ───────────────────────────────
+    function setSeg(id, pct, startPct) {
+      const el = $i(id);
+      if (!el) return;
+      const arc = Math.max(0, pct * CIRC);
+      el.setAttribute('stroke-dasharray', arc + ' ' + CIRC);
+      el.setAttribute('stroke-dashoffset', -(startPct * CIRC));
+    }
+
+    // ── Main calculation ────────────────────────────────────
+    function calc() {
+      const { homePrice, downPct, rate, term, loanType, taxPct, hoi, hoa } = S;
+      const cfg = LOAN_CFG[loanType];
+
+      const downAmt  = homePrice * (downPct / 100);
+      const loanAmt  = homePrice - downAmt;
+      const ltv      = (loanAmt / homePrice) * 100;
+      const r        = (rate / 100) / 12;
+      const n        = term * 12;
+
+      // P&I
+      const pi = r === 0 ? loanAmt / n
+        : loanAmt * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+
+      // Tax & insurance
+      const monthlyTax = (homePrice * taxPct / 100) / 12;
+      const monthlyHoi = hoi;
+      const monthlyHoa = hoa;
+
+      // PMI / MIP / guarantee fee
+      let monthlyPmi = 0, pmiLabel = 'PMI';
+      if (loanType === 'conventional' && ltv > 80) {
+        monthlyPmi = (loanAmt * cfg.pmiRate / 100) / 12;
+        pmiLabel = 'PMI';
+      } else if (loanType === 'fha') {
+        monthlyPmi = (loanAmt * cfg.mipRate / 100) / 12;
+        pmiLabel = 'MIP (FHA)';
+      } else if (loanType === 'usda') {
+        monthlyPmi = (loanAmt * cfg.annualFee / 100) / 12;
+        pmiLabel = 'Guarantee Fee';
+      }
+
+      const total = pi + monthlyTax + monthlyHoi + monthlyPmi + monthlyHoa;
+
+      // ── Update DOM ──────────────────────────────────────
+      $i('totalMonthly').textContent = fmtMo(total);
+      $i('bk-pi').textContent  = fmtMo(pi) + '/mo';
+      $i('bk-tax').textContent = fmtMo(monthlyTax) + '/mo';
+      $i('bk-hoi').textContent = fmtMo(monthlyHoi) + '/mo';
+      $i('bk-pmi').textContent = monthlyPmi > 0 ? fmtMo(monthlyPmi) + '/mo' : '$0/mo';
+      $i('bk-hoa').textContent = monthlyHoa > 0 ? fmtMo(monthlyHoa) + '/mo' : '$0/mo';
+      $i('pmi-label').textContent = pmiLabel;
+
+      $i('pmi-row').style.opacity = monthlyPmi > 0 ? '1' : '0.3';
+      $i('hoa-row').style.opacity = monthlyHoa > 0 ? '1' : '0.3';
+      $i('pmiNotice').style.display = (loanType === 'conventional' && ltv > 80) ? 'flex' : 'none';
+
+      // Summary
+      const totalInterest = Math.max(0, pi * n - loanAmt);
+      const totalCost     = total * n;
+      $i('sumLoan').textContent     = fmtK(loanAmt);
+      $i('sumLtv').textContent      = ltv.toFixed(1) + '%';
+      $i('sumInterest').textContent = fmtK(totalInterest);
+      $i('sumTotal').textContent    = fmtK(totalCost);
+
+      // Donut
+      if (total > 0) {
+        let off = 0;
+        const segs = [
+          ['seg-pi',  pi / total],
+          ['seg-tax', monthlyTax / total],
+          ['seg-hoi', monthlyHoi / total],
+          ['seg-pmi', monthlyPmi / total],
+          ['seg-hoa', monthlyHoa / total],
+        ];
+        segs.forEach(([id, pct]) => { setSeg(id, pct, off); off += pct; });
+      }
+
+      // Re-render amortization if open
+      if ($i('amortSection').style.display !== 'none') {
+        renderAmort(loanAmt, r, n, pi, monthlyTax, monthlyHoi, monthlyPmi, monthlyHoa);
+      }
+    }
+
+    // ── Amortization ────────────────────────────────────────
+    function renderAmort(loanAmt, r, n, pi, tax, hoi, pmi, hoa) {
+      const tbody   = $i('amortBody');
+      const monthly = S.amortView === 'monthly';
+      tbody.innerHTML = '';
+      let bal = loanAmt, yrPrin = 0, yrInt = 0, yrTot = 0;
+      const extras = tax + hoi + pmi + hoa;
+
+      for (let i = 1; i <= n; i++) {
+        const interest = bal * r;
+        const principal = pi - interest;
+        bal = Math.max(0, bal - principal);
+        yrPrin += principal; yrInt += interest; yrTot += pi + extras;
+
+        if (monthly) {
+          tbody.insertAdjacentHTML('beforeend',
+            `<tr><td>Mo ${i}</td><td>${fmtK(principal)}</td><td>${fmtK(interest)}</td><td>${fmtK(pi + extras)}</td><td>${fmtK(bal)}</td></tr>`);
+        } else if (i % 12 === 0 || i === n) {
+          const yr = Math.ceil(i / 12);
+          tbody.insertAdjacentHTML('beforeend',
+            `<tr><td>Year ${yr}</td><td>${fmtK(yrPrin)}</td><td>${fmtK(yrInt)}</td><td>${fmtK(yrTot)}</td><td>${fmtK(bal)}</td></tr>`);
+          yrPrin = 0; yrInt = 0; yrTot = 0;
+        }
+      }
+    }
+
+    // ── UI controls ─────────────────────────────────────────
+    function toggleAdv() {
+      const f = $i('advFields'), open = f.style.display !== 'none';
+      f.style.display = open ? 'none' : 'block';
+      $i('advArrow').textContent = open ? '▸' : '▾';
+    }
+
+    function toggleAmort() {
+      const s = $i('amortSection'), open = s.style.display !== 'none';
+      s.style.display = open ? 'none' : 'block';
+      $i('amortArrow').textContent = open ? '↓' : '↑';
+      if (!open) calc();
+    }
+
+    function setAmortView(v) {
+      S.amortView = v;
+      $i('btnAnnual').classList.toggle('active', v === 'annual');
+      $i('btnMonthly').classList.toggle('active', v === 'monthly');
+      calc();
+    }
+
+    // ── Slider wiring ────────────────────────────────────────
+    function wire(sliderId, handler) {
+      $i(sliderId).addEventListener('input', e => handler(e.target.value));
+    }
+
+    wire('homePriceSlider', v => {
+      S.homePrice = +v;
+      $i('homePriceDisplay').textContent = fmtK(S.homePrice);
+      $i('downAmtDisplay').textContent   = fmtK(S.homePrice * S.downPct / 100);
+      calc();
+    });
+
+    wire('downPaymentSlider', v => {
+      S.downPct = +v;
+      $i('downPctDisplay').textContent = (+v).toFixed(1) + '%';
+      $i('downAmtDisplay').textContent = fmtK(S.homePrice * S.downPct / 100);
+      calc();
+    });
+
+    wire('rateSlider', v => {
+      S.rate = +v;
+      $i('rateDisplay').textContent = (+v).toFixed(3) + '%';
+      calc();
+    });
+
+    wire('taxSlider', v => {
+      S.taxPct = +v;
+      $i('taxDisplay').textContent = (+v).toFixed(2) + '%/yr';
+      calc();
+    });
+
+    wire('hoiSlider', v => {
+      S.hoi = +v;
+      $i('hoiDisplay').textContent = '$' + v + '/mo';
+      calc();
+    });
+
+    wire('hoaSlider', v => {
+      S.hoa = +v;
+      $i('hoaDisplay').textContent = '$' + v + '/mo';
+      calc();
+    });
+
+    // ── Tab groups ───────────────────────────────────────────
+    document.getElementById('loanTypeGroup').querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('loanTypeGroup').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        S.loanType = btn.dataset.type;
+        const cfg = LOAN_CFG[S.loanType];
+        $i('loanTypeNote').textContent = cfg.note;
+        if (S.downPct < (cfg.minDown || 0)) {
+          S.downPct = cfg.minDown;
+          $i('downPaymentSlider').value = S.downPct;
+          $i('downPctDisplay').textContent = S.downPct.toFixed(1) + '%';
+          $i('downAmtDisplay').textContent = fmtK(S.homePrice * S.downPct / 100);
+        }
+        calc();
+      });
+    });
+
+    document.getElementById('termGroup').querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('termGroup').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        S.term = +btn.dataset.term;
+        calc();
+      });
+    });
+
+    // ── Init ─────────────────────────────────────────────────
+    calc();
+  </script>
 </body>
 </html>
