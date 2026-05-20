@@ -994,6 +994,435 @@
     .amort-table td:first-child { color: rgba(255,255,255,0.3); font-weight: 700; font-size: 11px; }
     .amort-table td:last-child { color: var(--accent); font-weight: 600; }
 
+    /* ── Sticky Floating CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: var(--accent);
+      color: var(--navy);
+      border: none;
+      border-radius: 50px;
+      padding: 14px 24px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.2s, opacity 0.3s;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sticky-cta.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .sticky-cta:hover {
+      background: var(--accent-dk);
+      transform: translateY(-2px);
+    }
+
+    /* ── Paths Section ── */
+    #paths {
+      background: var(--off-white);
+    }
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .path-card {
+      background: var(--navy);
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 32px 24px;
+      cursor: pointer;
+      transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+      text-align: center;
+    }
+    .path-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+    .path-icon {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .path-card h3 {
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+    /* ── Quiz Section ── */
+    #quiz {
+      background: var(--navy-dark);
+    }
+    #quiz h2 { color: var(--white); }
+    #quiz .section-eyebrow { color: var(--accent); }
+    .quiz-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .quiz-progress-wrap {
+      margin-bottom: 32px;
+    }
+    .quiz-progress-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .quiz-progress-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .quiz-step {
+      display: none;
+      animation: fadeUp 0.35s ease;
+    }
+    .quiz-step.active { display: block; }
+    .quiz-question {
+      font-family: 'Prata', serif;
+      font-size: clamp(20px, 2.5vw, 28px);
+      color: var(--white);
+      margin-bottom: 28px;
+      line-height: 1.3;
+    }
+    .quiz-options {
+      display: grid;
+      gap: 12px;
+    }
+    .quiz-options.two-col { grid-template-columns: 1fr 1fr; }
+    .quiz-opt {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 16px 20px;
+      color: rgba(255,255,255,0.8);
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      text-align: left;
+    }
+    .quiz-opt:hover, .quiz-opt.selected {
+      background: rgba(201,168,76,0.18);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+    .quiz-nav {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .quiz-btn-next {
+      background: var(--accent);
+      color: var(--navy);
+      border: none;
+      border-radius: 4px;
+      padding: 13px 32px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .quiz-btn-next:hover { background: var(--accent-dk); }
+    .quiz-btn-back {
+      background: transparent;
+      color: rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px;
+      padding: 13px 20px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quiz-btn-back:hover { color: white; border-color: rgba(255,255,255,0.45); }
+    /* Results */
+    .quiz-results { display: none; animation: fadeUp 0.4s ease; }
+    .quiz-results.active { display: block; }
+    .results-heading {
+      font-family: 'Prata', serif;
+      color: var(--white);
+      font-size: clamp(22px, 3vw, 32px);
+      margin-bottom: 24px;
+    }
+    .result-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 22px 20px;
+      transition: border-color 0.2s;
+    }
+    .result-card:hover { border-color: var(--accent); }
+    .result-card-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+    .result-card h4 {
+      font-family: 'Prata', serif;
+      color: var(--white);
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+    .result-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+    .results-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .quiz-restart {
+      margin-top: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.38);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+    }
+    .quiz-restart:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── Rent Calculator ── */
+    #rent-calc { background: var(--off-white); }
+    .rent-calc-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .rent-form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 32px;
+    }
+    .rent-input-group { margin-bottom: 22px; }
+    .rent-label {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-body);
+      margin-bottom: 8px;
+    }
+    .rent-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .rent-input:focus { border-color: var(--navy); }
+    .rent-calc-btn {
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      padding: 14px;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .rent-calc-btn:hover { background: var(--navy-mid); }
+    .rent-result-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 32px;
+    }
+    .rent-result-placeholder {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-body);
+    }
+    .rent-result-placeholder .big-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+    .rent-result-output { display: none; }
+    .rent-result-headline {
+      font-family: 'Prata', serif;
+      font-size: clamp(20px, 2.5vw, 26px);
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    .rent-result-headline strong {
+      color: var(--navy);
+      display: block;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+    .rent-breakdown {
+      background: var(--off-white);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .rent-breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+    }
+    .rent-breakdown-row:last-child { border-bottom: none; }
+    .rent-breakdown-row span:last-child { font-weight: 700; color: var(--navy); }
+    .rent-disclaimer {
+      font-size: 12px;
+      color: var(--text-body);
+      font-style: italic;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    @keyframes numberPop {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .rent-result-output.animate .rent-result-headline strong {
+      animation: numberPop 0.5s ease forwards;
+    }
+
+    /* ── Myth Busters ── */
+    #myths { background: var(--navy-dark); }
+    #myths .section-eyebrow { color: var(--accent); }
+    #myths h2 { color: var(--white); }
+    #myths > .container > p { color: rgba(255,255,255,0.62); }
+    .myths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .myth-card-wrap {
+      perspective: 1000px;
+      height: 200px;
+      cursor: pointer;
+    }
+    .myth-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.55s ease;
+    }
+    .myth-card-wrap.flipped .myth-card-inner {
+      transform: rotateY(180deg);
+    }
+    .myth-front, .myth-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      padding: 24px 20px;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .myth-front {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .myth-back {
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      transform: rotateY(180deg);
+    }
+    .myth-front-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .myth-front p {
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .myth-front-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      font-family: 'Lato', sans-serif;
+      font-style: italic;
+    }
+    .myth-back-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .myth-back p {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* ── Hero CTA Strip Headline ── */
+    .hero-strip-headline {
+      font-family: 'Prata', serif;
+      font-size: clamp(22px, 3vw, 36px);
+      color: var(--navy);
+      font-weight: 400;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .hero-strip-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      color: var(--text-body);
+      margin-bottom: 20px;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .loans-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1016,6 +1445,15 @@
       .footer-grid { grid-template-columns: 1fr; }
       section { padding: 64px 0; }
       .calc-summary { grid-template-columns: 1fr 1fr; }
+      .paths-grid { grid-template-columns: 1fr 1fr; }
+      .myths-grid { grid-template-columns: 1fr 1fr; }
+      .rent-calc-inner { grid-template-columns: 1fr; }
+      .quiz-options.two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .paths-grid { grid-template-columns: 1fr; }
+      .myths-grid { grid-template-columns: 1fr; }
+      .myth-card-wrap { height: 180px; }
     }
   </style>
 </head>
@@ -1079,8 +1517,13 @@
     <h1 class="sr-only">Your Pathway to Homeownership</h1>
   </header>
 
+  <!-- STICKY FLOATING CTA -->
+  <a href="#quiz" class="sticky-cta" id="stickyCta">🏠 See What You May Qualify For</a>
+
   <!-- CTA STRIP between hero image and stats bar -->
   <div class="hero-cta-strip">
+    <h2 class="hero-strip-headline">Denied Before? Welcome to the Loan to Home Zone.</h2>
+    <p class="hero-strip-sub">Find out what loan programs you may qualify for in under 60 seconds.</p>
     <span class="hero-eyebrow">Tan Akles-Fitch &nbsp;·&nbsp; Mortgage Loan Solutionist</span>
     <div class="hero-ctas">
       <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get Pre-Qualified</a>
@@ -1113,6 +1556,161 @@
       </div>
     </div>
   </div>
+
+  <!-- CHOOSE YOUR PATH -->
+  <section id="paths">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+        <span class="section-eyebrow" style="display:block;margin:0 auto 12px;">Find Your Fit</span>
+        <h2>Which Path Sounds Like You?</h2>
+        <p style="margin:0 auto;">Click your situation and we'll point you to the right loan programs.</p>
+      </div>
+      <div class="paths-grid">
+        <div class="path-card" data-scenario="denied" onclick="selectPath(this)">
+          <span class="path-icon">🚫</span>
+          <h3>I Was Denied Before</h3>
+        </div>
+        <div class="path-card" data-scenario="self-employed" onclick="selectPath(this)">
+          <span class="path-icon">💼</span>
+          <h3>I'm Self-Employed</h3>
+        </div>
+        <div class="path-card" data-scenario="down-payment" onclick="selectPath(this)">
+          <span class="path-icon">💰</span>
+          <h3>I Need Down Payment Help</h3>
+        </div>
+        <div class="path-card" data-scenario="credit" onclick="selectPath(this)">
+          <span class="path-icon">🔄</span>
+          <h3>I'm Rebuilding Credit</h3>
+        </div>
+        <div class="path-card" data-scenario="investment" onclick="selectPath(this)">
+          <span class="path-icon">🏘️</span>
+          <h3>I Want Investment Property</h3>
+        </div>
+        <div class="path-card" data-scenario="veteran" onclick="selectPath(this)">
+          <span class="path-icon">🎖️</span>
+          <h3>I'm a Veteran</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORTGAGE MATCH QUIZ -->
+  <section id="quiz">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:48px;">
+        <span class="section-eyebrow">2-Minute Quiz</span>
+        <h2>What Type of Homebuyer Are You?</h2>
+        <p style="color:rgba(255,255,255,0.62); max-width:520px; margin:0 auto;">Answer 6 quick questions — we'll show your best loan matches.</p>
+      </div>
+      <div class="quiz-container">
+
+        <!-- Progress bar -->
+        <div class="quiz-progress-wrap" id="quizProgressWrap">
+          <div class="quiz-progress-label">
+            <span id="quizProgressText">Question 1 of 6</span>
+            <span id="quizProgressPct">0%</span>
+          </div>
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="quiz-step active" id="qStep1">
+          <div class="quiz-question">Are you a first-time homebuyer?</div>
+          <div class="quiz-options two-col">
+            <button class="quiz-opt" data-q="1" data-v="yes" onclick="selectOpt(this)">✅ Yes, first time</button>
+            <button class="quiz-opt" data-q="1" data-v="no" onclick="selectOpt(this)">🔁 No, I've owned before</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn-next" onclick="quizNext(2)">Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz-step" id="qStep2">
+          <div class="quiz-question">What's your credit score range?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-q="2" data-v="below580" onclick="selectOpt(this)">📉 Below 580</button>
+            <button class="quiz-opt" data-q="2" data-v="580619" onclick="selectOpt(this)">📊 580–619</button>
+            <button class="quiz-opt" data-q="2" data-v="620679" onclick="selectOpt(this)">📈 620–679</button>
+            <button class="quiz-opt" data-q="2" data-v="680plus" onclick="selectOpt(this)">🏆 680+</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn-back" onclick="quizBack(1)">← Back</button>
+            <button class="quiz-btn-next" onclick="quizNext(3)">Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz-step" id="qStep3">
+          <div class="quiz-question">Are you a U.S. Veteran or active military?</div>
+          <div class="quiz-options two-col">
+            <button class="quiz-opt" data-q="3" data-v="yes" onclick="selectOpt(this)">🎖️ Yes</button>
+            <button class="quiz-opt" data-q="3" data-v="no" onclick="selectOpt(this)">🚶 No</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn-back" onclick="quizBack(2)">← Back</button>
+            <button class="quiz-btn-next" onclick="quizNext(4)">Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="quiz-step" id="qStep4">
+          <div class="quiz-question">Are you self-employed or 1099?</div>
+          <div class="quiz-options two-col">
+            <button class="quiz-opt" data-q="4" data-v="yes" onclick="selectOpt(this)">💼 Yes</button>
+            <button class="quiz-opt" data-q="4" data-v="no" onclick="selectOpt(this)">🏢 No, W-2 employee</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn-back" onclick="quizBack(3)">← Back</button>
+            <button class="quiz-btn-next" onclick="quizNext(5)">Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="quiz-step" id="qStep5">
+          <div class="quiz-question">How much have you saved for a down payment?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-q="5" data-v="lt3" onclick="selectOpt(this)">🪙 Less than 3%</button>
+            <button class="quiz-opt" data-q="5" data-v="3to5" onclick="selectOpt(this)">💵 3–5%</button>
+            <button class="quiz-opt" data-q="5" data-v="6to10" onclick="selectOpt(this)">💰 6–10%</button>
+            <button class="quiz-opt" data-q="5" data-v="gt10" onclick="selectOpt(this)">🏦 10%+</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn-back" onclick="quizBack(4)">← Back</button>
+            <button class="quiz-btn-next" onclick="quizNext(6)">Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="quiz-step" id="qStep6">
+          <div class="quiz-question">What matters most to you?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-q="6" data-v="lowpay" onclick="selectOpt(this)">📉 Lowest monthly payment</button>
+            <button class="quiz-opt" data-q="6" data-v="fast" onclick="selectOpt(this)">⚡ Fastest approval</button>
+            <button class="quiz-opt" data-q="6" data-v="mindown" onclick="selectOpt(this)">🤏 Minimum down payment</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn-back" onclick="quizBack(5)">← Back</button>
+            <button class="quiz-btn-next" onclick="quizShowResults()">See My Matches →</button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="quiz-results" id="quizResults">
+          <h3 class="results-heading">Your Best Matches:</h3>
+          <div class="result-cards" id="resultCards"></div>
+          <div class="results-ctas">
+            <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get Pre-Qualified Now</a>
+            <a href="#" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;">Talk to Tan</a>
+          </div>
+          <button class="quiz-restart" onclick="quizRestart()">Start over</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- LOAN SOLUTIONS -->
   <section id="loans">
@@ -1405,6 +2003,156 @@
       </div>
 
     </div><!-- /container -->
+  </section>
+
+  <!-- YOUR RENT COULD BUY THIS CALCULATOR -->
+  <section id="rent-calc">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+        <span class="section-eyebrow">Reality Check</span>
+        <h2>Could Your Rent Become a Mortgage?</h2>
+        <p style="margin:0 auto;">See what home price your current rent payment could qualify for.</p>
+      </div>
+      <div class="rent-calc-inner">
+        <div class="rent-form-card">
+          <div class="rent-input-group">
+            <label class="rent-label" for="rentInput">Your monthly rent ($)</label>
+            <input class="rent-input" type="number" id="rentInput" value="1500" min="100" max="20000" step="50">
+          </div>
+          <div class="rent-input-group">
+            <label class="rent-label" for="rentRate">Estimated interest rate (%)</label>
+            <input class="rent-input" type="number" id="rentRate" value="7.0" min="2" max="15" step="0.1">
+          </div>
+          <div class="rent-input-group">
+            <label class="rent-label" for="rentTerm">Loan term</label>
+            <select class="rent-input" id="rentTerm">
+              <option value="30">30 Year Fixed</option>
+              <option value="15">15 Year Fixed</option>
+            </select>
+          </div>
+          <button class="rent-calc-btn" onclick="calcRent()">Calculate My Home Budget</button>
+        </div>
+        <div class="rent-result-card">
+          <div class="rent-result-placeholder" id="rentPlaceholder">
+            <span class="big-icon">🏠</span>
+            <p>Enter your rent above and click calculate to see what home you could afford.</p>
+          </div>
+          <div class="rent-result-output" id="rentOutput">
+            <div class="rent-result-headline">
+              Your <span id="rentDisplayAmt">$1,500</span>/month rent ≈
+              <strong id="rentHomePrice">$0</strong>
+            </div>
+            <div class="rent-breakdown">
+              <div class="rent-breakdown-row">
+                <span>Estimated Loan Amount</span>
+                <span id="rentLoanAmt">—</span>
+              </div>
+              <div class="rent-breakdown-row">
+                <span>Estimated Home Price (5% down)</span>
+                <span id="rentHomePriceBreak">—</span>
+              </div>
+              <div class="rent-breakdown-row">
+                <span>Monthly P&I Payment</span>
+                <span id="rentMonthly">—</span>
+              </div>
+            </div>
+            <p class="rent-disclaimer">This estimate assumes principal + interest only. Taxes, insurance, and PMI are extra. Actual qualification depends on income, credit, and other factors.</p>
+            <a href="#quiz" class="btn btn-primary" style="width:100%;justify-content:center;">See If You Qualify →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORTGAGE MYTH BUSTERS -->
+  <section id="myths">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:52px;">
+        <span class="section-eyebrow">Myth vs. Reality</span>
+        <h2>Mortgage Myths — Busted</h2>
+        <p style="color:rgba(255,255,255,0.62); max-width:520px; margin:0 auto;">Tap each card to reveal the truth.</p>
+      </div>
+      <div class="myths-grid">
+        <div class="myth-card-wrap" onclick="flipMyth(this)">
+          <div class="myth-card-inner">
+            <div class="myth-front">
+              <span class="myth-front-icon">❌</span>
+              <p>"You need 20% down"</p>
+              <span class="myth-front-hint">Tap to reveal the truth</span>
+            </div>
+            <div class="myth-back">
+              <span class="myth-back-icon">✅</span>
+              <p>Many programs allow 3% or less — some even 0%</p>
+            </div>
+          </div>
+        </div>
+        <div class="myth-card-wrap" onclick="flipMyth(this)">
+          <div class="myth-card-inner">
+            <div class="myth-front">
+              <span class="myth-front-icon">❌</span>
+              <p>"You must wait 2 years after bankruptcy"</p>
+              <span class="myth-front-hint">Tap to reveal the truth</span>
+            </div>
+            <div class="myth-back">
+              <span class="myth-back-icon">✅</span>
+              <p>Some programs allow purchase 1–2 years post-discharge</p>
+            </div>
+          </div>
+        </div>
+        <div class="myth-card-wrap" onclick="flipMyth(this)">
+          <div class="myth-card-inner">
+            <div class="myth-front">
+              <span class="myth-front-icon">❌</span>
+              <p>"Only W-2 employees can qualify"</p>
+              <span class="myth-front-hint">Tap to reveal the truth</span>
+            </div>
+            <div class="myth-back">
+              <span class="myth-back-icon">✅</span>
+              <p>Bank statement loans are built for self-employed buyers</p>
+            </div>
+          </div>
+        </div>
+        <div class="myth-card-wrap" onclick="flipMyth(this)">
+          <div class="myth-card-inner">
+            <div class="myth-front">
+              <span class="myth-front-icon">❌</span>
+              <p>"You need perfect credit"</p>
+              <span class="myth-front-hint">Tap to reveal the truth</span>
+            </div>
+            <div class="myth-back">
+              <span class="myth-back-icon">✅</span>
+              <p>FHA accepts scores as low as 580 with 3.5% down</p>
+            </div>
+          </div>
+        </div>
+        <div class="myth-card-wrap" onclick="flipMyth(this)">
+          <div class="myth-card-inner">
+            <div class="myth-front">
+              <span class="myth-front-icon">❌</span>
+              <p>"Renting is cheaper than buying"</p>
+              <span class="myth-front-hint">Tap to reveal the truth</span>
+            </div>
+            <div class="myth-back">
+              <span class="myth-back-icon">✅</span>
+              <p>At today's rates, your rent may already cover a mortgage</p>
+            </div>
+          </div>
+        </div>
+        <div class="myth-card-wrap" onclick="flipMyth(this)">
+          <div class="myth-card-inner">
+            <div class="myth-front">
+              <span class="myth-front-icon">❌</span>
+              <p>"You can't buy with student loans"</p>
+              <span class="myth-front-hint">Tap to reveal the truth</span>
+            </div>
+            <div class="myth-back">
+              <span class="myth-back-icon">✅</span>
+              <p>IBR payments and deferred loans have flexible guidelines</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CTA BANNER -->
@@ -1703,6 +2451,197 @@
 
     // ── Init ─────────────────────────────────────────────────
     calc();
+  </script>
+
+  <script>
+    // ── Sticky CTA show/hide ─────────────────────────────────
+    (function() {
+      var btn = document.getElementById('stickyCta');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }, { passive: true });
+    })();
+
+    // ── Path card → quiz scroll + context ────────────────────
+    var selectedPathScenario = null;
+    function selectPath(card) {
+      selectedPathScenario = card.dataset.scenario;
+      // Pre-select quiz options based on scenario
+      var preMap = {
+        'veteran':       { q: '3', v: 'yes' },
+        'self-employed': { q: '4', v: 'yes' },
+        'down-payment':  { q: '5', v: 'lt3' },
+        'credit':        { q: '2', v: '580619' },
+        'investment':    { q: '6', v: 'lowpay' },
+        'denied':        { q: '2', v: '580619' }
+      };
+      var pre = preMap[selectedPathScenario];
+      if (pre) {
+        document.querySelectorAll('[data-q="' + pre.q + '"]').forEach(function(el) {
+          el.classList.remove('selected');
+          if (el.dataset.v === pre.v) el.classList.add('selected');
+        });
+        quizAnswers[pre.q] = pre.v;
+      }
+      document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ── Quiz logic ───────────────────────────────────────────
+    var quizAnswers = {};
+    var quizCurrentStep = 1;
+
+    function quizShowStep(step) {
+      document.querySelectorAll('.quiz-step').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      var el = document.getElementById('qStep' + step);
+      if (el) el.classList.add('active');
+      // Update progress
+      var pct = Math.round(((step - 1) / 6) * 100);
+      document.getElementById('quizProgressFill').style.width = pct + '%';
+      document.getElementById('quizProgressText').textContent = 'Question ' + step + ' of 6';
+      document.getElementById('quizProgressPct').textContent = pct + '%';
+      document.getElementById('quizProgressWrap').style.display = 'block';
+      document.getElementById('quizResults').classList.remove('active');
+      quizCurrentStep = step;
+    }
+
+    function selectOpt(btn) {
+      var q = btn.dataset.q;
+      document.querySelectorAll('[data-q="' + q + '"]').forEach(function(el) {
+        el.classList.remove('selected');
+      });
+      btn.classList.add('selected');
+      quizAnswers[q] = btn.dataset.v;
+    }
+
+    function quizNext(nextStep) {
+      quizShowStep(nextStep);
+    }
+
+    function quizBack(prevStep) {
+      quizShowStep(prevStep);
+    }
+
+    function quizShowResults() {
+      // Hide all steps and progress
+      document.querySelectorAll('.quiz-step').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById('quizProgressWrap').style.display = 'none';
+
+      // Determine matches
+      var matches = [];
+      var a = quizAnswers;
+
+      if (a['3'] === 'yes') {
+        matches.push({ icon: '🎖️', name: 'VA Loan', desc: '0% down for eligible veterans. No monthly PMI required.' });
+      }
+      if (a['4'] === 'yes') {
+        matches.push({ icon: '📋', name: 'Bank Statement Loan', desc: 'Qualify using 12–24 months of bank statements instead of tax returns.' });
+      }
+      if (a['2'] === 'below580' || a['2'] === '580619') {
+        matches.push({ icon: '🏛️', name: 'FHA Loan', desc: 'As low as 3.5% down with credit scores starting at 580.' });
+      }
+      if (a['5'] === 'lt3' || a['5'] === '3to5') {
+        matches.push({ icon: '🤝', name: 'Down Payment Assistance (DPA)', desc: 'Grants and second loans to cover your down payment and closing costs.' });
+      }
+      if (a['2'] === '620679' || a['2'] === '680plus') {
+        if (!matches.find(function(m) { return m.name === 'FHA Loan'; })) {
+          matches.push({ icon: '🏛️', name: 'FHA Loan', desc: 'Government-backed with flexible credit and low down payment options.' });
+        }
+        matches.push({ icon: '🏠', name: 'Conventional Loan', desc: 'As low as 3% down with strong rates for buyers with good credit.' });
+      }
+      if (a['6'] === 'lowpay' && a['2'] === '680plus') {
+        if (!a['veteran']) {
+          matches.push({ icon: '🌾', name: 'USDA Loan', desc: '0% down for eligible rural and suburban properties.' });
+        }
+      }
+      if (selectedPathScenario === 'investment') {
+        matches.push({ icon: '📊', name: 'DSCR Loan', desc: 'Qualify based on property cash flow — no personal income required.' });
+      }
+
+      // Deduplicate and cap at 4
+      var seen = {};
+      matches = matches.filter(function(m) {
+        if (seen[m.name]) return false;
+        seen[m.name] = true;
+        return true;
+      }).slice(0, 4);
+
+      // Default if nothing matched
+      if (matches.length === 0) {
+        matches = [
+          { icon: '🏛️', name: 'FHA Loan', desc: 'Government-backed with flexible credit and low down payment options.' },
+          { icon: '🏠', name: 'Conventional Loan', desc: '3% down minimum for qualified borrowers with solid credit.' }
+        ];
+      }
+
+      // Render result cards
+      var html = '';
+      matches.forEach(function(m) {
+        html += '<div class="result-card"><span class="result-card-icon">' + m.icon + '</span><h4>' + m.name + '</h4><p>' + m.desc + '</p></div>';
+      });
+      document.getElementById('resultCards').innerHTML = html;
+
+      document.getElementById('quizResults').classList.add('active');
+    }
+
+    function quizRestart() {
+      quizAnswers = {};
+      selectedPathScenario = null;
+      document.querySelectorAll('.quiz-opt').forEach(function(el) { el.classList.remove('selected'); });
+      quizShowStep(1);
+    }
+
+    // ── Rent Calculator ─────────────────────────────────────
+    function calcRent() {
+      var rent   = parseFloat(document.getElementById('rentInput').value) || 1500;
+      var rate   = parseFloat(document.getElementById('rentRate').value)  || 7.0;
+      var term   = parseInt(document.getElementById('rentTerm').value)    || 30;
+
+      var r = (rate / 100) / 12;
+      var n = term * 12;
+
+      // Solve for P: payment = P * [r(1+r)^n / ((1+r)^n - 1)]
+      var loanAmt;
+      if (r === 0) {
+        loanAmt = rent * n;
+      } else {
+        loanAmt = rent / (r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
+      }
+
+      // Assume 5% down → price = loan / 0.95
+      var homePrice = loanAmt / 0.95;
+
+      function fmt(n) {
+        return '$' + Math.round(n).toLocaleString();
+      }
+
+      document.getElementById('rentDisplayAmt').textContent = '$' + Math.round(rent).toLocaleString();
+      document.getElementById('rentHomePrice').textContent  = fmt(homePrice);
+      document.getElementById('rentLoanAmt').textContent    = fmt(loanAmt);
+      document.getElementById('rentHomePriceBreak').textContent = fmt(homePrice);
+      document.getElementById('rentMonthly').textContent    = fmt(rent) + '/mo';
+
+      document.getElementById('rentPlaceholder').style.display = 'none';
+      var out = document.getElementById('rentOutput');
+      out.style.display = 'block';
+      out.classList.remove('animate');
+      // Trigger reflow for re-animation
+      void out.offsetWidth;
+      out.classList.add('animate');
+    }
+
+    // ── Myth card flip ───────────────────────────────────────
+    function flipMyth(card) {
+      card.classList.toggle('flipped');
+    }
   </script>
 
   <script>
