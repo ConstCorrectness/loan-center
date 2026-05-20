@@ -177,6 +177,7 @@
       align-items: center;
       overflow: hidden;
       background: url('2.jpeg') center center / cover no-repeat;
+      align-items: flex-end;
     }
 
     .hero::before {
@@ -200,10 +201,11 @@
     .hero-inner {
       position: relative;
       z-index: 2;
-      padding: 110px 5%;
+      padding: 0 5% 56px;
       max-width: 1280px;
       margin: 0 auto;
       width: 100%;
+      text-align: center;
     }
 
     .hero-eyebrow {
@@ -213,41 +215,56 @@
       letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       display: block;
       animation: fadeUp 0.55s ease both;
     }
 
     .hero h1 {
-      max-width: 660px;
-      margin-bottom: 26px;
+      max-width: 100%;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 1.1;
+      margin-bottom: 32px;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.08);
       animation: fadeUp 0.55s 0.1s ease both;
-    }
-
-    .hero-sub {
-      font-size: 17px;
-      color: rgba(255,255,255,0.72);
-      max-width: 500px;
-      margin-bottom: 40px;
-      line-height: 1.75;
-      animation: fadeUp 0.55s 0.2s ease both;
     }
 
     .hero-ctas {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      animation: fadeUp 0.55s 0.3s ease both;
+      justify-content: center;
+      animation: fadeUp 0.55s 0.2s ease both;
     }
 
     .hero-note {
       margin-top: 28px;
       font-size: 13px;
       color: rgba(255,255,255,0.4);
-      animation: fadeUp 0.55s 0.4s ease both;
+      animation: fadeUp 0.55s 0.3s ease both;
     }
 
     .hero-note a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+
+    .hero-path-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .hero-inner { z-index: 4; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+    }
 
     /* ── Stats Bar ── */
     .stats-bar {
@@ -1055,10 +1072,26 @@
 
   <!-- HERO -->
   <header class="hero">
+
+    <!-- Curved text scrolling along the pool edge -->
+    <svg class="hero-path-svg" aria-hidden="true">
+      <defs>
+        <filter id="heroTextGlow" x="-20%" y="-60%" width="140%" height="220%">
+          <feDropShadow dx="0" dy="3" stdDeviation="10" flood-color="rgba(0,0,0,0.55)"/>
+        </filter>
+        <path id="poolCurve" d=""/>
+      </defs>
+      <text id="heroText" font-family="Prata, Georgia, serif" font-size="66" fill="white"
+            filter="url(#heroTextGlow)" letter-spacing="4">
+        <textPath id="heroTextPath" href="#poolCurve" startOffset="-20%">
+          Your Pathway to Homeownership
+        </textPath>
+      </text>
+    </svg>
+
     <div class="hero-inner">
       <span class="hero-eyebrow">Tan Akles-Fitch &nbsp;·&nbsp; Mortgage Loan Solutionist</span>
-      <h1>Your Pathway<br>to Homeownership</h1>
-      <p class="hero-sub">Expert guidance for every stage of your mortgage journey. From FHA to specialized programs, we find the perfect financial foundation for your future.</p>
+      <h1 class="sr-only">Your Pathway to Homeownership</h1>
       <div class="hero-ctas">
         <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get Pre-Qualified</a>
         <a href="#loans" class="btn btn-outline">Explore Loan Types</a>
@@ -1681,6 +1714,47 @@
 
     // ── Init ─────────────────────────────────────────────────
     calc();
+  </script>
+
+  <script>
+    (function() {
+      var tp   = document.getElementById('heroTextPath');
+      var curve = document.getElementById('poolCurve');
+      var svg  = document.querySelector('.hero-path-svg');
+      var hero = document.querySelector('.hero');
+      var textEl = document.getElementById('heroText');
+      if (!tp || !curve || !svg || !hero) return;
+
+      function setupPath() {
+        var W = hero.offsetWidth;
+        var H = hero.offsetHeight;
+        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        // Responsive font: large on desktop, readable on mobile
+        var fs = Math.max(28, Math.min(66, W / 14));
+        textEl.setAttribute('font-size', fs);
+        // Curve hugs the pool edge: dips at sides, peaks ~60% down
+        var poolY = H * 0.73;
+        var peakY = H * 0.61;
+        curve.setAttribute('d',
+          'M ' + (-W * 0.25) + ',' + poolY +
+          ' C ' + (W * 0.15) + ',' + peakY +
+          ' ' + (W * 0.65) + ',' + (peakY * 0.97) +
+          ' ' + (W * 1.25) + ',' + poolY
+        );
+      }
+
+      setupPath();
+      window.addEventListener('resize', setupPath);
+
+      var offset = -20;
+      function tick() {
+        offset += 0.055;
+        if (offset > 110) offset = -20;
+        tp.setAttribute('startOffset', offset + '%');
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
   </script>
 </body>
 </html>
