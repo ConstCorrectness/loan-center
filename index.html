@@ -176,9 +176,10 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: url('2.jpeg') center 55% / cover no-repeat;
+      background: url('4.jpeg') center 78% / cover no-repeat;
       align-items: flex-end;
-      max-height: 680px;
+      min-height: 620px;
+      max-height: 700px;
     }
 
     .hero::before {
@@ -1721,13 +1722,12 @@
         textEl.setAttribute('font-size', fs);
         // Text sits inside the blue pool water — well below the coping
         // kidney curve: left side dips deeper, rises toward center-right
+        // Rectangular pool — gentle horizontal wave across the water
         curve.setAttribute('d',
-          'M ' + (-W * 0.20) + ',' + (H * 0.70) +
-          ' C ' + (W * 0.12) + ',' + (H * 0.78) +
-          ' '  + (W * 0.48) + ',' + (H * 0.66) +
-          ' '  + (W * 0.72) + ',' + (H * 0.71) +
-          ' S ' + (W * 1.10) + ',' + (H * 0.72) +
-          ' '  + (W * 1.30) + ',' + (H * 0.72)
+          'M ' + (-W * 0.20) + ',' + (H * 0.65) +
+          ' C ' + (W * 0.25) + ',' + (H * 0.62) +
+          ' '  + (W * 0.60) + ',' + (H * 0.68) +
+          ' '  + (W * 1.30) + ',' + (H * 0.65)
         );
       }
 
