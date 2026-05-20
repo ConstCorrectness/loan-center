@@ -198,14 +198,11 @@
       background-size: 60px 60px;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      padding: 0 5% 56px;
-      max-width: 1280px;
-      margin: 0 auto;
-      width: 100%;
+    .hero-cta-strip {
+      background: var(--white);
+      padding: 28px 5% 24px;
       text-align: center;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
     }
 
     .hero-eyebrow {
@@ -217,16 +214,6 @@
       color: var(--accent);
       margin-bottom: 18px;
       display: block;
-      animation: fadeUp 0.55s ease both;
-    }
-
-    .hero h1 {
-      max-width: 100%;
-      font-size: clamp(2.8rem, 7vw, 5.2rem);
-      line-height: 1.1;
-      margin-bottom: 32px;
-      text-shadow: 0 4px 24px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.08);
-      animation: fadeUp 0.55s 0.1s ease both;
     }
 
     .hero-ctas {
@@ -234,17 +221,15 @@
       gap: 14px;
       flex-wrap: wrap;
       justify-content: center;
-      animation: fadeUp 0.55s 0.2s ease both;
     }
 
     .hero-note {
-      margin-top: 28px;
+      margin-top: 18px;
       font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      animation: fadeUp 0.55s 0.3s ease both;
+      color: rgba(0,0,0,0.4);
     }
 
-    .hero-note a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+    .hero-note a { color: var(--navy); text-decoration: underline; }
 
     .hero-path-svg {
       position: absolute;
@@ -256,7 +241,6 @@
       overflow: visible;
     }
 
-    .hero-inner { z-index: 4; }
 
     .sr-only {
       position: absolute;
@@ -1089,16 +1073,18 @@
       </text>
     </svg>
 
-    <div class="hero-inner">
-      <span class="hero-eyebrow">Tan Akles-Fitch &nbsp;·&nbsp; Mortgage Loan Solutionist</span>
-      <h1 class="sr-only">Your Pathway to Homeownership</h1>
-      <div class="hero-ctas">
-        <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get Pre-Qualified</a>
-        <a href="#loans" class="btn btn-outline">Explore Loan Types</a>
-      </div>
-      <p class="hero-note">Looking to partner? <a href="https://1660690.myagentloans.com/register">Join as a BDM</a></p>
-    </div>
+    <h1 class="sr-only">Your Pathway to Homeownership</h1>
   </header>
+
+  <!-- CTA STRIP between hero image and stats bar -->
+  <div class="hero-cta-strip">
+    <span class="hero-eyebrow">Tan Akles-Fitch &nbsp;·&nbsp; Mortgage Loan Solutionist</span>
+    <div class="hero-ctas">
+      <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get Pre-Qualified</a>
+      <a href="#loans" class="btn btn-outline" style="color:var(--navy);border-color:var(--navy);">Explore Loan Types</a>
+    </div>
+    <p class="hero-note">Looking to partner? <a href="https://1660690.myagentloans.com/register">Join as a BDM</a></p>
+  </div>
 
   <!-- STATS BAR -->
   <div class="stats-bar">
@@ -1732,14 +1718,15 @@
         // Responsive font: large on desktop, readable on mobile
         var fs = Math.max(28, Math.min(66, W / 14));
         textEl.setAttribute('font-size', fs);
-        // Curve hugs the pool edge: dips at sides, peaks ~60% down
-        var poolY = H * 0.73;
-        var peakY = H * 0.61;
+        // Text sits inside the pool water, tracing the kidney curve:
+        // starts in the water left, dips deeper through the indent, rises back right
         curve.setAttribute('d',
-          'M ' + (-W * 0.25) + ',' + poolY +
-          ' C ' + (W * 0.15) + ',' + peakY +
-          ' ' + (W * 0.65) + ',' + (peakY * 0.97) +
-          ' ' + (W * 1.25) + ',' + poolY
+          'M ' + (-W * 0.20) + ',' + (H * 0.62) +
+          ' C ' + (W * 0.12) + ',' + (H * 0.82) +
+          ' '  + (W * 0.48) + ',' + (H * 0.56) +
+          ' '  + (W * 0.72) + ',' + (H * 0.66) +
+          ' S ' + (W * 1.10) + ',' + (H * 0.68) +
+          ' '  + (W * 1.30) + ',' + (H * 0.68)
         );
       }
 
