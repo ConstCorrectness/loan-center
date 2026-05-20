@@ -1733,10 +1733,10 @@
       setupPath();
       window.addEventListener('resize', setupPath);
 
-      var offset = 110;
+      var offset = 100;
       function tick() {
         offset -= 0.055;
-        if (offset < -20) offset = 110;
+        if (offset < -20) offset = 100;
         tp.setAttribute('startOffset', offset + '%');
         requestAnimationFrame(tick);
       }
