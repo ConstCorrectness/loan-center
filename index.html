@@ -1423,6 +1423,213 @@
       margin-bottom: 20px;
     }
 
+    /* ── Hero Strip Additions ── */
+    .hero-strip-desc {
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      color: var(--text-body);
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .hero-compliance {
+      font-size: 11px;
+      color: rgba(0,0,0,0.32);
+      margin-top: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Denied to Qualified Simulator ── */
+    .dtq-section {
+      background: linear-gradient(160deg, #0a1628 0%, #0f2040 100%);
+      padding: 80px 5%;
+    }
+    .dtq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .dtq-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.28);
+      border-radius: 16px;
+      padding: 32px 28px;
+    }
+    .dtq-card-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .dtq-card-desc {
+      color: rgba(255,255,255,0.48);
+      font-size: 14px;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .dtq-slider-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .dtq-slider-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .dtq-slider-val {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--accent);
+      font-family: 'Lato', sans-serif;
+      line-height: 1;
+    }
+    .dtq-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.14);
+      outline: none;
+      cursor: pointer;
+      margin-bottom: 4px;
+    }
+    .dtq-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 2px 10px rgba(201,168,76,0.45);
+    }
+    .dtq-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: 2px solid white;
+    }
+    .dtq-result {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 20px 18px;
+      border-left: 3px solid var(--accent);
+      min-height: 140px;
+      transition: background 0.3s;
+    }
+    .dtq-tier {
+      font-family: 'Lato', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .tier-limited  { background:rgba(220,50,50,0.2);   color:#ff7070; }
+    .tier-eligible { background:rgba(255,165,0,0.2);   color:#ffb347; }
+    .tier-good     { background:rgba(100,180,100,0.2); color:#7ecf7e; }
+    .tier-great    { background:rgba(80,200,150,0.2);  color:#5fd9a0; }
+    .tier-best     { background:rgba(201,168,76,0.22); color:var(--accent); }
+    .dtq-result-headline {
+      font-family: 'Prata', serif;
+      font-size: 15px;
+      color: white;
+      margin: 6px 0 10px;
+      line-height: 1.4;
+    }
+    .dtq-check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .dtq-check-list li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.68);
+      padding: 3px 0;
+    }
+    .dtq-cash-display {
+      text-align: center;
+      padding: 8px 0 4px;
+    }
+    .dtq-cash-big {
+      font-family: 'Lato', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+      display: block;
+      transition: color 0.3s;
+    }
+    .dtq-cash-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 5px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .dtq-cash-breakdown {
+      margin-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px;
+    }
+    .dtq-cash-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      padding: 3px 0;
+    }
+    .dtq-cash-row.dtq-savings { color: #5fd9a0; font-weight: 600; }
+    .dtq-dpa-toggle {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .dtq-dpa-toggle input[type=checkbox] {
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+    .dtq-dpa-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .dtq-cta {
+      text-align: center;
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .dtq-cta p {
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 18px;
+      font-size: 13px;
+    }
+    @media (max-width: 768px) {
+      .dtq-grid { grid-template-columns: 1fr; }
+      .dtq-cash-big { font-size: 34px; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .loans-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1522,13 +1729,16 @@
 
   <!-- CTA STRIP between hero image and stats bar -->
   <div class="hero-cta-strip">
-    <h2 class="hero-strip-headline">Denied Before? Welcome to the Loan to Home Zone.</h2>
-    <p class="hero-strip-sub">Find out what loan programs you may qualify for in under 60 seconds.</p>
+    <h2 class="hero-strip-headline">Buy a House With Less Than $2,000 Out of Pocket*</h2>
+    <p class="hero-strip-sub">Down payment assistance programs available in multiple states for qualified buyers.</p>
+    <p class="hero-strip-desc">First time buyer? Credit challenges? Low savings?<br>Tan with the Master Plan helps structure smart paths to homeownership.</p>
     <span class="hero-eyebrow">Tan Akles-Fitch &nbsp;·&nbsp; Mortgage Loan Solutionist</span>
     <div class="hero-ctas">
-      <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get Pre-Qualified</a>
-      <a href="#loans" class="btn btn-outline" style="color:var(--navy);border-color:var(--navy);">Explore Loan Types</a>
+      <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">See If I Qualify</a>
+      <a href="#calculator" class="btn btn-outline" style="color:var(--navy);border-color:var(--navy);">Calculate My Payment</a>
+      <a href="#quiz" class="btn btn-outline" style="color:var(--navy);border-color:var(--navy);">Take The Homebuyer Quiz</a>
     </div>
+    <p class="hero-compliance">*Programs available for qualified borrowers. Not all applicants will qualify.</p>
     <p class="hero-note">Looking to partner? <a href="https://1660690.myagentloans.com/register">Join as a BDM</a></p>
   </div>
 
@@ -2155,6 +2365,58 @@
     </div>
   </section>
 
+  <!-- DENIED TO QUALIFIED SIMULATOR -->
+  <section class="dtq-section" id="dtq">
+    <div class="container">
+      <div style="text-align:center;">
+        <span class="section-eyebrow" style="color:var(--accent);">What If…</span>
+        <h2 style="color:white;">Denied to Qualified Simulator</h2>
+        <p style="color:rgba(255,255,255,0.58); max-width:540px; margin:0 auto;">
+          Move the sliders and watch your options change in real time.<br>Small moves can make a huge difference.
+        </p>
+      </div>
+
+      <div class="dtq-grid">
+
+        <!-- CARD 1: Score Boost -->
+        <div class="dtq-card">
+          <div class="dtq-card-label">📈 Score Boost Simulator</div>
+          <p class="dtq-card-desc">"What if my credit score went up?"</p>
+          <div class="dtq-slider-row">
+            <span class="dtq-slider-label">Credit Score</span>
+            <span class="dtq-slider-val" id="scoreVal">580</span>
+          </div>
+          <input type="range" class="dtq-slider" id="scoreSlider" min="500" max="780" step="5" value="580" oninput="updateScoreSim()">
+          <div class="slider-bounds" style="color:rgba(255,255,255,0.35);font-size:12px;"><span>500</span><span>780</span></div>
+          <div class="dtq-result" id="scoreResult"></div>
+        </div>
+
+        <!-- CARD 2: Cash to Close -->
+        <div class="dtq-card">
+          <div class="dtq-card-label">💰 Cash to Close Simulator</div>
+          <p class="dtq-card-desc">"What if the seller paid my closing costs?"</p>
+          <div class="dtq-slider-row">
+            <span class="dtq-slider-label">Seller Concession</span>
+            <span class="dtq-slider-val" id="concessionVal">0%</span>
+          </div>
+          <input type="range" class="dtq-slider" id="concessionSlider" min="0" max="6" step="0.5" value="0" oninput="updateConcessionSim()">
+          <div class="slider-bounds" style="color:rgba(255,255,255,0.35);font-size:12px;"><span>0%</span><span>6%</span></div>
+          <label class="dtq-dpa-toggle">
+            <input type="checkbox" id="dpaToggle" onchange="updateConcessionSim()">
+            <span class="dtq-dpa-label">✨ Apply Down Payment Assistance (DPA)</span>
+          </label>
+          <div class="dtq-result" id="concessionResult"></div>
+        </div>
+
+      </div>
+
+      <div class="dtq-cta">
+        <p>Estimates based on a $300,000 home with an FHA loan. Your actual numbers may vary.</p>
+        <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-gold">Get My Real Numbers →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA BANNER -->
   <div class="cta-banner">
     <span class="section-eyebrow" style="color: var(--accent);">Ready to Start?</span>
@@ -2642,6 +2904,115 @@
     function flipMyth(card) {
       card.classList.toggle('flipped');
     }
+
+    // ── Denied to Qualified Simulator ────────────────────────
+    function updateScoreSim() {
+      var score = parseInt(document.getElementById('scoreSlider').value);
+      document.getElementById('scoreVal').textContent = score;
+      var result = document.getElementById('scoreResult');
+      var tier, headline, items;
+
+      if (score < 580) {
+        tier = '<span class="dtq-tier tier-limited">Limited Options</span>';
+        headline = 'Credit improvement recommended before applying.';
+        items = [
+          '❌ FHA — not yet eligible (580 minimum)',
+          '❌ Conventional — not yet eligible (620 minimum)',
+          '⚠️ Non-QM options possible with larger down',
+          '💡 Just <strong>' + (580 - score) + ' more points</strong> unlocks FHA'
+        ];
+      } else if (score < 620) {
+        tier = '<span class="dtq-tier tier-eligible">FHA Eligible ✅</span>';
+        headline = 'You qualify for FHA with 3.5% down.';
+        items = [
+          '✅ FHA Loan — 3.5% down payment',
+          '✅ Down Payment Assistance may apply',
+          '❌ Conventional — needs 620+',
+          '💡 Just <strong>' + (620 - score) + ' more points</strong> unlocks Conventional'
+        ];
+      } else if (score < 680) {
+        tier = '<span class="dtq-tier tier-good">Conventional Open ✅</span>';
+        headline = 'Conventional and FHA both available.';
+        items = [
+          '✅ FHA Loan — 3.5% down',
+          '✅ Conventional — as low as 3% down',
+          '✅ More lender options competing for you',
+          '💡 Just <strong>' + (680 - score) + ' more points</strong> for stronger rate tiers'
+        ];
+      } else if (score < 720) {
+        tier = '<span class="dtq-tier tier-great">Strong Profile 💪</span>';
+        headline = 'Most programs open. Competitive rates.';
+        items = [
+          '✅ FHA, Conventional, USDA, VA all available',
+          '✅ Strong lender competition',
+          '✅ Better interest rate tiers',
+          '💡 Just <strong>' + (720 - score) + ' more points</strong> for best-tier pricing'
+        ];
+      } else {
+        tier = '<span class="dtq-tier tier-best">Best Tier 🏆</span>';
+        headline = 'Excellent. You qualify for the best rates available.';
+        items = [
+          '✅ Full program access',
+          '✅ Best available interest rates',
+          '✅ Maximum lender competition',
+          '✅ Strongest negotiating position'
+        ];
+      }
+
+      result.innerHTML =
+        tier +
+        '<p class="dtq-result-headline">' + headline + '</p>' +
+        '<ul class="dtq-check-list">' +
+          items.map(function(i) { return '<li>' + i + '</li>'; }).join('') +
+        '</ul>';
+    }
+
+    function updateConcessionSim() {
+      var concPct  = parseFloat(document.getElementById('concessionSlider').value);
+      var dpa      = document.getElementById('dpaToggle').checked;
+      document.getElementById('concessionVal').textContent = concPct.toFixed(1) + '%';
+
+      var homePrice     = 300000;
+      var downAmt       = homePrice * 0.035;   // FHA 3.5% = $10,500
+      var closingCosts  = homePrice * 0.03;    // ~$9,000
+      var sellerPays    = Math.min(homePrice * (concPct / 100), closingCosts);
+      var remainClosing = Math.max(0, closingCosts - sellerPays);
+      var dpaBenefit    = dpa ? downAmt : 0;
+      var cashToClose   = Math.max(0, (downAmt - dpaBenefit) + remainClosing);
+      var totalSavings  = sellerPays + dpaBenefit;
+
+      function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+      var cashColor = cashToClose === 0 ? '#5fd9a0' : (cashToClose < 5000 ? 'var(--accent)' : 'white');
+
+      var html =
+        '<div class="dtq-cash-display">' +
+          '<span class="dtq-cash-big" style="color:' + cashColor + '">' + fmt(cashToClose) + '</span>' +
+          '<span class="dtq-cash-label">Estimated Cash to Close</span>' +
+        '</div>' +
+        '<div class="dtq-cash-breakdown">' +
+          '<div class="dtq-cash-row"><span>Down Payment (3.5%)</span><span>' + fmt(downAmt) + '</span></div>' +
+          '<div class="dtq-cash-row"><span>Closing Costs (~3%)</span><span>' + fmt(closingCosts) + '</span></div>';
+
+      if (concPct > 0)
+        html += '<div class="dtq-cash-row dtq-savings"><span>Seller Pays Closing</span><span>−' + fmt(sellerPays) + '</span></div>';
+      if (dpa)
+        html += '<div class="dtq-cash-row dtq-savings"><span>DPA Covers Down Payment</span><span>−' + fmt(dpaBenefit) + '</span></div>';
+      if (totalSavings > 0)
+        html += '<div class="dtq-cash-row" style="border-top:1px solid rgba(255,255,255,0.1);margin-top:6px;padding-top:6px;color:white;font-weight:700;"><span>You Need</span><span>' + fmt(cashToClose) + '</span></div>';
+
+      html += '</div>';
+      if (cashToClose === 0)
+        html += '<p style="text-align:center;color:#5fd9a0;font-size:13px;font-weight:700;margin-top:12px;">🎉 Potentially $0 out of pocket!</p>';
+
+      document.getElementById('concessionResult').innerHTML = html;
+    }
+
+    // Init simulators
+    document.addEventListener('DOMContentLoaded', function() {
+      updateScoreSim();
+      updateConcessionSim();
+    });
   </script>
 
   <script>
