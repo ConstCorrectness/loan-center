@@ -173,32 +173,151 @@
     .hero {
       position: relative;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-      background: url('5.jpeg') center 50% / cover no-repeat;
-      min-height: 560px;
-      max-height: 680px;
+      background: linear-gradient(135deg, #001f42 0%, var(--navy) 45%, #165595 100%);
+      min-height: 580px;
+      max-height: 700px;
       max-width: 1280px;
       margin-left: auto;
       margin-right: auto;
+      text-align: center;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.15);
-    }
-
-    /* Subtle grid texture */
+    /* Dot grid texture */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Gold glow behind headline */
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.14) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 4;
+      max-width: 720px;
+      padding: 60px 24px;
+    }
+
+    .hero-tag {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 26px;
+      display: block;
+    }
+
+    .hero-rotate-wrap {
+      overflow: hidden;
+      min-height: clamp(52px, 7.5vw, 92px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #heroRotateText {
+      font-family: 'Prata', serif;
+      font-size: clamp(44px, 6.5vw, 82px);
+      color: white;
+      line-height: 1.05;
+      display: block;
+      transition: transform 0.45s cubic-bezier(.22,.68,0,1.2), opacity 0.4s ease;
+    }
+
+    .hero-rotate-static {
+      font-family: 'Prata', serif;
+      font-size: clamp(22px, 2.8vw, 38px);
+      color: var(--accent);
+      line-height: 1.25;
+      margin-top: 8px;
+      display: block;
+    }
+
+    .hero-underline {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      border-radius: 2px;
+      margin: 16px auto 28px;
+      width: 0;
+      transition: width 0.7s cubic-bezier(.22,.68,0,1.2);
+      max-width: 360px;
+    }
+
+    .hero-sub-text {
+      color: rgba(255,255,255,0.62);
+      font-size: 15px;
+      max-width: 460px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Floating stat pills */
+    .hero-pills {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    .hero-pill {
+      position: absolute;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,76,0.22);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-pill:nth-child(1) { top:12%; left:5%;   animation: pillFloat 6s   ease-in-out infinite; }
+    .hero-pill:nth-child(2) { top:20%; right:7%;  animation: pillFloat 8s   ease-in-out infinite 1s; }
+    .hero-pill:nth-child(3) { top:65%; left:8%;   animation: pillFloat 7s   ease-in-out infinite 2s; }
+    .hero-pill:nth-child(4) { top:72%; right:10%; animation: pillFloat 5.5s ease-in-out infinite 0.5s; }
+    .hero-pill:nth-child(5) { top:45%; left:2%;   animation: pillFloat 9s   ease-in-out infinite 3s; }
+    .hero-pill:nth-child(6) { top:38%; right:3%;  animation: pillFloat 6.5s ease-in-out infinite 1.5s; }
+
+    @keyframes pillFloat {
+      0%, 100% { transform: translateY(0px);   opacity: 0.55; }
+      50%       { transform: translateY(-14px); opacity: 0.95; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-pill { display: none; }
+      .hero-inner { padding: 40px 20px; }
     }
 
     .hero-cta-strip {
@@ -1705,23 +1824,42 @@
   <!-- HERO -->
   <header class="hero">
 
-    <!-- Curved text scrolling along the pool edge -->
-    <svg class="hero-path-svg" aria-hidden="true">
-      <defs>
-        <filter id="heroTextGlow" x="-20%" y="-60%" width="140%" height="220%">
-          <feDropShadow dx="0" dy="3" stdDeviation="10" flood-color="rgba(0,0,0,0.55)"/>
-        </filter>
-        <path id="poolCurve" d=""/>
-      </defs>
-      <text id="heroText" font-family="Prata, Georgia, serif" font-size="66" fill="white"
-            filter="url(#heroTextGlow)" letter-spacing="4">
-        <textPath id="heroTextPath" href="#poolCurve" startOffset="-20%">
-          Your Pathway to Homeownership
-        </textPath>
-      </text>
-    </svg>
+    <!-- Background glow -->
+    <div class="hero-glow" aria-hidden="true"></div>
 
-    <h1 class="sr-only">Your Pathway to Homeownership</h1>
+    <!-- Floating stat pills -->
+    <div class="hero-pills" aria-hidden="true">
+      <span class="hero-pill">2,600+ Programs</span>
+      <span class="hero-pill">280+ Lenders</span>
+      <span class="hero-pill">18-Day Avg. Close</span>
+      <span class="hero-pill">4.9★ Rated</span>
+      <span class="hero-pill">FHA · USDA · VA</span>
+      <span class="hero-pill">DPA Available</span>
+    </div>
+
+    <!-- Center content -->
+    <div class="hero-inner">
+      <span class="hero-tag">Tan with the Master Plan</span>
+
+      <div class="hero-rotate-wrap">
+        <span id="heroRotateText">Denied Before?</span>
+      </div>
+
+      <span class="hero-rotate-static">You might qualify today.</span>
+      <div class="hero-underline" id="heroUnderline"></div>
+
+      <p class="hero-sub-text">
+        Every situation is different. Every solution is personal.<br>
+        Let's find yours — in under 60 seconds.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#quiz" class="btn btn-gold">Take the Homebuyer Quiz</a>
+        <a href="https://tanloancenter.my1003app.com/1834094/register" class="btn btn-outline">See If I Qualify</a>
+      </div>
+    </div>
+
+    <h1 class="sr-only">Your Pathway to Homeownership — Tan Loan Center</h1>
   </header>
 
   <!-- STICKY FLOATING CTA -->
@@ -3017,42 +3155,46 @@
 
   <script>
     (function() {
-      var tp   = document.getElementById('heroTextPath');
-      var curve = document.getElementById('poolCurve');
-      var svg  = document.querySelector('.hero-path-svg');
-      var hero = document.querySelector('.hero');
-      var textEl = document.getElementById('heroText');
-      if (!tp || !curve || !svg || !hero) return;
+      var phrases = [
+        'Denied Before?',
+        'Low Savings?',
+        'First Time Buyer?',
+        'Credit Challenges?',
+        'Self-Employed?',
+        'No Problem.'
+      ];
+      var idx = 0;
+      var el  = document.getElementById('heroRotateText');
+      var bar = document.getElementById('heroUnderline');
+      if (!el || !bar) return;
 
-      function setupPath() {
-        var W = hero.offsetWidth;
-        var H = hero.offsetHeight;
-        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-        // Responsive font: large on desktop, readable on mobile
-        var fs = Math.max(14, Math.min(36, W / 24));
-        textEl.setAttribute('font-size', fs);
-        // Text sits inside the blue pool water — well below the coping
-        // kidney curve: left side dips deeper, rises toward center-right
-        // Rectangular pool — gentle horizontal wave across the water
-        curve.setAttribute('d',
-          'M ' + (-W * 0.20) + ',' + (H * 0.72) +
-          ' C ' + (W * 0.25) + ',' + (H * 0.69) +
-          ' '  + (W * 0.60) + ',' + (H * 0.75) +
-          ' '  + (W * 1.30) + ',' + (H * 0.72)
-        );
+      // Animate underline in on load
+      setTimeout(function() { bar.style.width = '75%'; }, 400);
+
+      function rotate() {
+        // Slide out upward
+        el.style.transform = 'translateY(-36px)';
+        el.style.opacity   = '0';
+        bar.style.width    = '0';
+
+        setTimeout(function() {
+          idx = (idx + 1) % phrases.length;
+          el.textContent     = phrases[idx];
+          el.style.transition = 'none';
+          el.style.transform  = 'translateY(36px)';
+          el.style.opacity    = '0';
+
+          // Force reflow then slide in
+          el.offsetHeight;
+          el.style.transition = 'transform 0.45s cubic-bezier(.22,.68,0,1.2), opacity 0.4s ease';
+          el.style.transform  = 'translateY(0)';
+          el.style.opacity    = '1';
+
+          setTimeout(function() { bar.style.width = '75%'; }, 180);
+        }, 420);
       }
 
-      setupPath();
-      window.addEventListener('resize', setupPath);
-
-      var offset = 100;
-      function tick() {
-        offset -= 0.055;
-        if (offset < -20) offset = 100;
-        tp.setAttribute('startOffset', offset + '%');
-        requestAnimationFrame(tick);
-      }
-      tick();
+      setInterval(rotate, 3200);
     })();
   </script>
 </body>
